@@ -4,37 +4,33 @@ FLAGS	= -Wall -Werror -Wextra
 LIBFT	= ./libft/libft.a
 SRCS	= ${wildcard *.c}
 OBJS	= ${SRCS:.c=.o}
-AR 		= ar
 RM		= rm -f
 
-%.o:%.c
+%.o: %.c
 	$(CC) $(FLAGS) -I./libft -c $< -o $@
 
-${NAME}: $(LIBFT) ${OBJS}
-	make -C libft
-	cp ${LIBFT} ${NAME}
-	${AR} rcs ${NAME} ${OBJS}
+$(NAME): $(LIBFT) $(OBJS)
+	$(CC) $(FLAGS) -o $(NAME) $(OBJS) $(LIBFT)
 
-all: ${NAME}
+all: $(NAME)
 
-bonus:
-	@make all
-	
+bonus: all
+
 $(LIBFT):
 	make -C libft
 
 clean:
-	make fclean -C libft
+	make clean -C libft
 	${RM} ${OBJS}
 
 fclean: clean
 	make fclean -C libft
-	${RM} ${NAME}
+	${RM} $(NAME)
 
 re: fclean all
 
-norm :
+norm:
 	norminette -R CheckForbiddenSourceHeader ${SRCS}
 	norminette -R CheckDefine *.h
 
-.PHONY: all re clean fclean
+.PHONY: all re clean fclean norm bonus
