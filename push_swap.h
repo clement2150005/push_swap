@@ -6,7 +6,7 @@
 /*   By: ccolin <ccolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 09:35:56 by ccolin            #+#    #+#             */
-/*   Updated: 2024/07/23 19:55:08 by ccolin           ###   ########.fr       */
+/*   Updated: 2024/07/24 19:47:02 by ccolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # include <stdio.h>
 # include <stdlib.h>
+# include "libft.h"
+# include "ft_printf.h"
 
 typedef struct stacks
 {
