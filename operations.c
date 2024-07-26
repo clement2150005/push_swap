@@ -6,54 +6,24 @@
 /*   By: ccolin <ccolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 10:14:34 by ccolin            #+#    #+#             */
-/*   Updated: 2024/07/24 09:19:48 by ccolin           ###   ########.fr       */
+/*   Updated: 2024/07/26 19:45:20 by ccolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-/* This function performs the "sa" operation in the push_swap program, which 
-swaps the first two elements of stack A if there are at least two elements. If 
-the swap is successful, it prints "sa" and returns 0. Otherwise, it returns 1.
--
-この関数は、push_swapプログラムにおける "sa" 操作を実行し、要素が2つ以上ある場合にスタックA
-の最初の2つの要素を交換します。交換が成功すると "sa" を表示し、0を返します。そうでない場合は1
-を返します。*/
-int	sa(t_stacks *stacks)
+void	ft_sa(t_stacks *stacks)
 {
-	if (ft_swap(stacks-> a, stacks-> size_a) == 0)
-	{
-		ft_printf("sa\n");
-		return (0);
-	}
-	return (1);
+	ft_swap(stacks-> a, stacks-> size_a);
+	ft_printf("sa\n");
 }
 
-/* This function performs the "sb" operation in the push_swap program, which 
-swaps the first two elements of stack B if there are at least two elements. If 
-the swap is successful, it prints "sb" and returns 0. Otherwise, it returns 1.
--
-この関数は、push_swapプログラムにおける "sb" 操作を実行し、要素が2つ以上ある場合にスタックB
-の最初の2つの要素を交換します。交換が成功すると "sb" を表示し、0を返します。そうでない場合は1
-を返します。*/
-int	sb(t_stacks *stacks)
+void	ft_sb(t_stacks *stacks)
 {
-	if (ft_swap(stacks-> b, stacks-> size_b) == 0)
-	{
-		ft_printf("sb\n");
-		return (0);
-	}
-	return (1);
+	ft_swap(stacks-> b, stacks-> size_b);
+	ft_printf("sb\n");
 }
 
-/* This function performs the "ss" operation in the push_swap program, which 
-simultaneously swaps the first two elements of both stack A and stack B if there 
-are at least two elements in each stack. If the swap is successful for both 
-stacks, it prints "ss" and returns 0. Otherwise, it returns 1.
--
-この関数は、push_swapプログラムにおける "ss" 操作を実行し、両方のスタックAおよびスタックBにおいて
-要素がそれぞれ2つ以上ある場合に同時に最初の2つの要素を交換します。交換が両方のスタックで成功すると
-"ss" を表示し、0を返します。そうでない場合は1を返します。*/
 int	ft_ss(t_stacks *stacks)
 {
 	int	temp;
@@ -70,55 +40,20 @@ int	ft_ss(t_stacks *stacks)
 	return (0);
 }
 
-int	ft_pa(t_stacks *stacks)
+void	ft_pa(t_stacks *stacks)
 {
 	stacks->a = ft_push_top_element(stacks->b, stacks->a, stacks->size_a);
 	stacks->b = ft_remove_first_element(stacks->b, stacks-> size_b);
 	stacks->size_b--;
 	stacks->size_a++;
-	return (0);
+	ft_printf("pa\n");
 }
 
-int	ft_pb(t_stacks *stacks)
+void	ft_pb(t_stacks *stacks)
 {
 	stacks->b = ft_push_top_element(stacks->a, stacks->b, stacks->size_b);
-	stacks->a = ft_remove_first_element(stacks->b, stacks-> size_a);
+	stacks->a = ft_remove_first_element(stacks->a, stacks-> size_a);
 	stacks->size_a--;
 	stacks->size_b++;
-	return (0);
-}
-
-int	*ft_push_top_element(int *a, int *b, int size_b)
-{
-	int	*new_b;
-	int	i;
-	int	j;
-
-	i = 0;
-	j = 1;
-	new_b = malloc(sizeof(int) * size_b + 1);
-	if (!new_b)
-		return (NULL);
-	new_b[0] = a[0];
-	while (i < size_b)
-		new_b[j++] = b[i++];
-	free(b);
-	return (new_b);
-}
-
-int	*ft_remove_first_element(int *a, int size_a)
-{
-	int	*new_a;
-	int	i;
-	int	j;
-
-	i = 0;
-	j = 1;
-	new_a = malloc(sizeof(int) * size_a + 1);
-	if (!new_a)
-		return (NULL);
-	while (j < size_a)
-		new_a[i++] = a[j++];
-	free(a);
-	return (new_a);
+	ft_printf("pb\n");
 }

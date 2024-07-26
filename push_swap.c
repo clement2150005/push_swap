@@ -6,7 +6,7 @@
 /*   By: ccolin <ccolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 11:23:52 by ccolin            #+#    #+#             */
-/*   Updated: 2024/07/26 09:18:08 by ccolin           ###   ########.fr       */
+/*   Updated: 2024/07/26 20:04:51 by ccolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,88 +14,72 @@
 #include <stdlib.h>
 #include "push_swap.h"
 
-void	print_stack(int *stack, int size)
+void print_stack(int *stack, size_t size, char stack_name)
 {
-	int i;
-
-	i = 0;
-	while (i < size)
-	{
+	printf("Stack %c: ", stack_name);
+	for (size_t i = 0; i < size; i++)
 		printf("%d ", stack[i]);
-		i++;
-	}
 	printf("\n");
 }
 
-int	main(void)
+int main(void)
 {
 	t_stacks stacks;
-	int initial_a[] = {4, 3, 2, 1};
-	int initial_b[] = {8, 7, 6, 5};
-	int i;
 
-	stacks.size_a = 4;
-	stacks.size_b = 4;
-
+	stacks.size_a = 5;
+	stacks.size_b = 5;
 	stacks.a = malloc(sizeof(int) * stacks.size_a);
 	stacks.b = malloc(sizeof(int) * stacks.size_b);
-
 	if (!stacks.a || !stacks.b)
 		return (1);
 
-	i = 0;
-	while (i < (int)stacks.size_a)
-	{
-		stacks.a[i] = initial_a[i];
-		i++;
-	}
+	for (size_t i = 0; i < stacks.size_a; i++)
+		stacks.a[i] = i + 1;
+	for (size_t i = 0; i < stacks.size_b; i++)
+		stacks.b[i] = i + 6;
 
-	i = 0;
-	while (i < (int)stacks.size_b)
-	{
-		stacks.b[i] = initial_b[i];
-		i++;
-	}
+	print_stack(stacks.a, stacks.size_a, 'A');
+	print_stack(stacks.b, stacks.size_b, 'B');
 
-	printf("Initial state:\n");
-	printf("Stack A: ");
-	print_stack(stacks.a, stacks.size_a);
-	printf("Stack B: ");
-	print_stack(stacks.b, stacks.size_b);
+	ft_sa(&stacks);
+	print_stack(stacks.a, stacks.size_a, 'A');
 
-	sa(&stacks);
-	printf("\nAfter sa:\n");
-	printf("Stack A: ");
-	print_stack(stacks.a, stacks.size_a);
-
-	sb(&stacks);
-	printf("\nAfter sb:\n");
-	printf("Stack B: ");
-	print_stack(stacks.b, stacks.size_b);
+	ft_sb(&stacks);
+	print_stack(stacks.b, stacks.size_b, 'B');
 
 	ft_ss(&stacks);
-	printf("\nAfter ss:\n");
-	printf("Stack A: ");
-	print_stack(stacks.a, stacks.size_a);
-	printf("Stack B: ");
-	print_stack(stacks.b, stacks.size_b);
+	print_stack(stacks.a, stacks.size_a, 'A');
+	print_stack(stacks.b, stacks.size_b, 'B');
 
 	ft_pa(&stacks);
-	printf("\nAfter pa:\n");
-	printf("Stack A: ");
-	print_stack(stacks.a, stacks.size_a);
-	printf("Stack B: ");
-	print_stack(stacks.b, stacks.size_b);
+	print_stack(stacks.a, stacks.size_a, 'A');
+	print_stack(stacks.b, stacks.size_b, 'B');
 
 	ft_pb(&stacks);
-	printf("\nAfter pb:\n");
-	printf("Stack A: ");
-	print_stack(stacks.a, stacks.size_a);
-	printf("Stack B: ");
-	print_stack(stacks.b, stacks.size_b);
+	print_stack(stacks.a, stacks.size_a, 'A');
+	print_stack(stacks.b, stacks.size_b, 'B');
+
+	ft_ra(&stacks);
+	print_stack(stacks.a, stacks.size_a, 'A');
+
+	ft_rb(&stacks);
+	print_stack(stacks.b, stacks.size_b, 'B');
+
+	ft_rr(&stacks);
+	print_stack(stacks.a, stacks.size_a, 'A');
+	print_stack(stacks.b, stacks.size_b, 'B');
+
+	ft_rra(&stacks);
+	print_stack(stacks.a, stacks.size_a, 'A');
+
+	ft_rrb(&stacks);
+	print_stack(stacks.b, stacks.size_b, 'B');
+
+	ft_rrr(&stacks);
+	print_stack(stacks.a, stacks.size_a, 'A');
+	print_stack(stacks.b, stacks.size_b, 'B');
 
 	free(stacks.a);
 	free(stacks.b);
-
 	return (0);
 }
