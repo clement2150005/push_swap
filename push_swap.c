@@ -6,50 +6,96 @@
 /*   By: ccolin <ccolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 11:23:52 by ccolin            #+#    #+#             */
-/*   Updated: 2024/07/24 09:19:58 by ccolin           ###   ########.fr       */
+/*   Updated: 2024/07/26 09:18:08 by ccolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
+#include <stdlib.h>
 #include "push_swap.h"
 
-int main()
+void	print_stack(int *stack, int size)
 {
-    t_stacks stacks;
-    stacks.size_a = 3;
-    stacks.size_b = 3;
-    stacks.a = (int *)malloc(stacks.size_a * sizeof(int));
-    stacks.b = (int *)malloc(stacks.size_b * sizeof(int));
+	int i;
 
-    stacks.a[0] = 1;
-    stacks.a[1] = 2;
-    stacks.a[2] = 3;
+	i = 0;
+	while (i < size)
+	{
+		printf("%d ", stack[i]);
+		i++;
+	}
+	printf("\n");
+}
 
-    stacks.b[0] = 4;
-    stacks.b[1] = 5;
-    stacks.b[2] = 6;
+int	main(void)
+{
+	t_stacks stacks;
+	int initial_a[] = {4, 3, 2, 1};
+	int initial_b[] = {8, 7, 6, 5};
+	int i;
 
-    printf("Before ft_ss: a = [%d, %d, %d], b = [%d, %d, %d]\n", stacks.a[0], stacks.a[1], stacks.a[2], stacks.b[0], stacks.b[1], stacks.b[2]);
-    ft_ss(stacks.a, stacks.size_a, stacks.b, stacks.size_b);
-    printf("After ft_ss: a = [%d, %d, %d], b = [%d, %d, %d]\n", stacks.a[0], stacks.a[1], stacks.a[2], stacks.b[0], stacks.b[1], stacks.b[2]);
+	stacks.size_a = 4;
+	stacks.size_b = 4;
 
-    printf("Before ft_pa: a = [%d, %d, %d], b = [%d, %d, %d]\n", stacks.a[0], stacks.a[1], stacks.a[2], stacks.b[0], stacks.b[1], stacks.b[2]);
-    ft_pa(&stacks);
-    printf("After ft_pa: a = [%d, %d, %d, %d], b = [%d, %d]\n", stacks.a[0], stacks.a[1], stacks.a[2], stacks.a[3], stacks.b[0], stacks.b[1]);
+	stacks.a = malloc(sizeof(int) * stacks.size_a);
+	stacks.b = malloc(sizeof(int) * stacks.size_b);
 
-    printf("Before ft_pb: a = [%d, %d, %d, %d], b = [%d, %d]\n", stacks.a[0], stacks.a[1], stacks.a[2], stacks.a[3], stacks.b[0], stacks.b[1]);
-    ft_pb(&stacks);
-    printf("After ft_pb: a = [%d, %d, %d], b = [%d, %d, %d]\n", stacks.a[0], stacks.a[1], stacks.a[2], stacks.b[0], stacks.b[1], stacks.b[2]);
+	if (!stacks.a || !stacks.b)
+		return (1);
 
-    printf("Before sa: a = [%d, %d, %d], b = [%d, %d, %d]\n", stacks.a[0], stacks.a[1], stacks.a[2], stacks.b[0], stacks.b[1], stacks.b[2]);
-    sa(&stacks);
-    printf("After sa: a = [%d, %d, %d], b = [%d, %d, %d]\n", stacks.a[0], stacks.a[1], stacks.a[2], stacks.b[0], stacks.b[1], stacks.b[2]);
+	i = 0;
+	while (i < (int)stacks.size_a)
+	{
+		stacks.a[i] = initial_a[i];
+		i++;
+	}
 
-    printf("Before sb: a = [%d, %d, %d], b = [%d, %d, %d]\n", stacks.a[0], stacks.a[1], stacks.a[2], stacks.b[0], stacks.b[1], stacks.b[2]);
-    sb(&stacks);
-    printf("After sb: a = [%d, %d, %d], b = [%d, %d, %d]\n", stacks.a[0], stacks.a[1], stacks.a[2], stacks.b[0], stacks.b[1], stacks.b[2]);
+	i = 0;
+	while (i < (int)stacks.size_b)
+	{
+		stacks.b[i] = initial_b[i];
+		i++;
+	}
 
-    free(stacks.a);
-    free(stacks.b);
+	printf("Initial state:\n");
+	printf("Stack A: ");
+	print_stack(stacks.a, stacks.size_a);
+	printf("Stack B: ");
+	print_stack(stacks.b, stacks.size_b);
 
-    return 0;
+	sa(&stacks);
+	printf("\nAfter sa:\n");
+	printf("Stack A: ");
+	print_stack(stacks.a, stacks.size_a);
+
+	sb(&stacks);
+	printf("\nAfter sb:\n");
+	printf("Stack B: ");
+	print_stack(stacks.b, stacks.size_b);
+
+	ft_ss(&stacks);
+	printf("\nAfter ss:\n");
+	printf("Stack A: ");
+	print_stack(stacks.a, stacks.size_a);
+	printf("Stack B: ");
+	print_stack(stacks.b, stacks.size_b);
+
+	ft_pa(&stacks);
+	printf("\nAfter pa:\n");
+	printf("Stack A: ");
+	print_stack(stacks.a, stacks.size_a);
+	printf("Stack B: ");
+	print_stack(stacks.b, stacks.size_b);
+
+	ft_pb(&stacks);
+	printf("\nAfter pb:\n");
+	printf("Stack A: ");
+	print_stack(stacks.a, stacks.size_a);
+	printf("Stack B: ");
+	print_stack(stacks.b, stacks.size_b);
+
+	free(stacks.a);
+	free(stacks.b);
+
+	return (0);
 }
