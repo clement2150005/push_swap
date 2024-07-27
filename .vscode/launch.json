@@ -1,0 +1,18 @@
+{
+    "configurations": [
+        {
+            "name": "C/C++: gcc Générer et déboguer le fichier actif",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${fileDirname}/${fileBasenameNoExtension}",
+            "args": ["1 2 3 4 5 6 7 8 9 10"],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "lldb",
+            "preLaunchTask": "C/C++: gcc générer le fichier actif"
+        }
+    ],
+    "version": "2.0.0"
+}

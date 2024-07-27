@@ -1,0 +1,31 @@
+---
+triple:          'x86_64-apple-darwin'
+binary-path:     '/Users/clement/Desktop/push_swap/push_swap'
+relocations:
+  - { offsetInCU: 0x26, offset: 0x26, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x0, symBinAddr: 0x1000005D0, symSize: 0x184 }
+  - { offsetInCU: 0x41, offset: 0x41, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x0, symBinAddr: 0x1000005D0, symSize: 0x184 }
+  - { offsetInCU: 0x26, offset: 0x173, size: 0x8, addend: 0x0, symName: _ft_sa, symObjAddr: 0x0, symBinAddr: 0x100000760, symSize: 0x40 }
+  - { offsetInCU: 0x41, offset: 0x18E, size: 0x8, addend: 0x0, symName: _ft_sa, symObjAddr: 0x0, symBinAddr: 0x100000760, symSize: 0x40 }
+  - { offsetInCU: 0x65, offset: 0x1B2, size: 0x8, addend: 0x0, symName: _ft_sb, symObjAddr: 0x40, symBinAddr: 0x1000007A0, symSize: 0x40 }
+  - { offsetInCU: 0x89, offset: 0x1D6, size: 0x8, addend: 0x0, symName: _ft_ss, symObjAddr: 0x80, symBinAddr: 0x1000007E0, symSize: 0xB0 }
+  - { offsetInCU: 0xBF, offset: 0x20C, size: 0x8, addend: 0x0, symName: _ft_pa, symObjAddr: 0x130, symBinAddr: 0x100000890, symSize: 0x90 }
+  - { offsetInCU: 0xE3, offset: 0x230, size: 0x8, addend: 0x0, symName: _ft_pb, symObjAddr: 0x1C0, symBinAddr: 0x100000920, symSize: 0x89 }
+  - { offsetInCU: 0x26, offset: 0x304, size: 0x8, addend: 0x0, symName: _ft_ra, symObjAddr: 0x0, symBinAddr: 0x1000009B0, symSize: 0x40 }
+  - { offsetInCU: 0x41, offset: 0x31F, size: 0x8, addend: 0x0, symName: _ft_ra, symObjAddr: 0x0, symBinAddr: 0x1000009B0, symSize: 0x40 }
+  - { offsetInCU: 0x65, offset: 0x343, size: 0x8, addend: 0x0, symName: _ft_rb, symObjAddr: 0x40, symBinAddr: 0x1000009F0, symSize: 0x40 }
+  - { offsetInCU: 0x89, offset: 0x367, size: 0x8, addend: 0x0, symName: _ft_rr, symObjAddr: 0x80, symBinAddr: 0x100000A30, symSize: 0x49 }
+  - { offsetInCU: 0x26, offset: 0x43B, size: 0x8, addend: 0x0, symName: _ft_rra, symObjAddr: 0x0, symBinAddr: 0x100000A80, symSize: 0x40 }
+  - { offsetInCU: 0x41, offset: 0x456, size: 0x8, addend: 0x0, symName: _ft_rra, symObjAddr: 0x0, symBinAddr: 0x100000A80, symSize: 0x40 }
+  - { offsetInCU: 0x65, offset: 0x47A, size: 0x8, addend: 0x0, symName: _ft_rrb, symObjAddr: 0x40, symBinAddr: 0x100000AC0, symSize: 0x40 }
+  - { offsetInCU: 0x89, offset: 0x49E, size: 0x8, addend: 0x0, symName: _ft_rrr, symObjAddr: 0x80, symBinAddr: 0x100000B00, symSize: 0x49 }
+  - { offsetInCU: 0x26, offset: 0x572, size: 0x8, addend: 0x0, symName: _ft_swap, symObjAddr: 0x0, symBinAddr: 0x100000B50, symSize: 0x50 }
+  - { offsetInCU: 0x3A, offset: 0x586, size: 0x8, addend: 0x0, symName: _ft_swap, symObjAddr: 0x0, symBinAddr: 0x100000B50, symSize: 0x50 }
+  - { offsetInCU: 0x7E, offset: 0x5CA, size: 0x8, addend: 0x0, symName: _ft_push_top_element, symObjAddr: 0x50, symBinAddr: 0x100000BA0, symSize: 0xB0 }
+  - { offsetInCU: 0xEC, offset: 0x638, size: 0x8, addend: 0x0, symName: _ft_remove_first_element, symObjAddr: 0x100, symBinAddr: 0x100000C50, symSize: 0xB0 }
+  - { offsetInCU: 0x14C, offset: 0x698, size: 0x8, addend: 0x0, symName: _ft_rotate, symObjAddr: 0x1B0, symBinAddr: 0x100000D00, symSize: 0x70 }
+  - { offsetInCU: 0x19A, offset: 0x6E6, size: 0x8, addend: 0x0, symName: _ft_rrotate, symObjAddr: 0x220, symBinAddr: 0x100000D70, symSize: 0x6C }
+  - { offsetInCU: 0x26, offset: 0x77C, size: 0x8, addend: 0x0, symName: _ft_set_array, symObjAddr: 0x0, symBinAddr: 0x100000DE0, symSize: 0xC0 }
+  - { offsetInCU: 0x50, offset: 0x7A6, size: 0x8, addend: 0x0, symName: _ft_set_array, symObjAddr: 0x0, symBinAddr: 0x100000DE0, symSize: 0xC0 }
+  - { offsetInCU: 0xA2, offset: 0x7F8, size: 0x8, addend: 0x0, symName: _ft_set_min_max, symObjAddr: 0xC0, symBinAddr: 0x100000EA0, symSize: 0xC0 }
+  - { offsetInCU: 0xD4, offset: 0x82A, size: 0x8, addend: 0x0, symName: _ft_ps_initialize, symObjAddr: 0x180, symBinAddr: 0x100000F60, symSize: 0xB4 }
+...

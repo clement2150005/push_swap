@@ -6,7 +6,7 @@
 /*   By: ccolin <ccolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 13:51:56 by ccolin            #+#    #+#             */
-/*   Updated: 2024/07/26 20:11:30 by ccolin           ###   ########.fr       */
+/*   Updated: 2024/07/27 09:04:23 by ccolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	ft_rotate(int *a, size_t b)
 
 	i = 0;
 	temp = a[0];
-	while (i <= (int)b)
+	while (i < (int)b - 1)
 	{
 		a[i] = a[i + 1];
 		i++;
@@ -80,8 +80,8 @@ void	ft_rrotate(int *a, size_t b)
 	int	temp;
 
 	i = b - 1;
-	temp = a[b];
-	while (i <= 0)
+	temp = a[b -1];
+	while (i > 0)
 	{
 		a[i] = a[i - 1];
 		i--;

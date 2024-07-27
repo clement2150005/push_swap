@@ -6,7 +6,7 @@
 /*   By: ccolin <ccolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 09:35:56 by ccolin            #+#    #+#             */
-/*   Updated: 2024/07/26 20:11:25 by ccolin           ###   ########.fr       */
+/*   Updated: 2024/07/27 11:04:58 by ccolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,13 @@ typedef struct stacks
 {
 	int		*a;
 	int		*b;
+	int		min;
+	int		max;
 	size_t	size_a;
 	size_t	size_b;
 }		t_stacks;
 
+void	ft_ps_initialize(int argc, char **argv, t_stacks *stacks);
 int		*ft_push_top_element(int *a, int *b, int size_b);
 int		*ft_remove_first_element(int *a, int size_a);
 int		ft_swap(int *a, size_t size);
