@@ -6,7 +6,7 @@
 /*   By: ccolin <ccolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 09:35:56 by ccolin            #+#    #+#             */
-/*   Updated: 2024/07/27 11:04:58 by ccolin           ###   ########.fr       */
+/*   Updated: 2024/07/27 13:57:34 by ccolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,16 @@ typedef struct stacks
 void	ft_ps_initialize(int argc, char **argv, t_stacks *stacks);
 int		*ft_push_top_element(int *a, int *b, int size_b);
 int		*ft_remove_first_element(int *a, int size_a);
+int		ft_error_check(int argc, char **argv);
+char	**ft_set_array(int argc, char **argv);
+int		ft_isduplicate(int *array, int size);
+int		ft_islimits(char **array, int argc);
+void	ft_freedoublearray(char **array);
+void	ft_free_stacks(t_stacks *stacks);
 int		ft_swap(int *a, size_t size);
 void	ft_rrotate(int *a, size_t b);
 void	ft_rotate(int *a, size_t b);
+int		ft_isnumber(char **array);
 void	ft_rra(t_stacks *stacks);
 void	ft_rrb(t_stacks *stacks);
 void	ft_rrr(t_stacks *stacks);
@@ -45,5 +52,6 @@ void	ft_pb(t_stacks *stacks);
 int		ft_ss(t_stacks *stacks);
 void	ft_sa(t_stacks *stacks);
 void	ft_sb(t_stacks *stacks);
+int		ft_isarg(int argc);
 
 #endif

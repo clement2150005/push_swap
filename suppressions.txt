@@ -1,0 +1,483 @@
+==23561== Memcheck, a memory error detector
+==23561== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==23561== Using Valgrind-3.23.0.GIT-lbmacos and LibVEX; rerun with -h for copyright info
+==23561== Command: ./push_swap 1\ 2\ 3\ 4\ 5\ 6
+==23561== Parent PID: 23548
+==23561== 
+==23561== Syscall param map_with_linking_np(link_info) points to uninitialised byte(s)
+==23561==    at 0x10007EA7E: __map_with_linking_np (in /usr/lib/dyld)
+==23561==    by 0x10002B4BD: dyld4::setUpPageInLinkingRegions(dyld4::RuntimeState&, dyld4::Loader const*, unsigned long, unsigned short, unsigned short, bool, dyld3::Array<dyld4::PageInLinkingRange> const&, dyld3::Array<void const*> const&) (in /usr/lib/dyld)
+==23561==    by 0x10002AEA4: invocation function for block in dyld4::Loader::setUpPageInLinking(Diagnostics&, dyld4::RuntimeState&, unsigned long, unsigned long long, dyld3::Array<void const*> const&) const (in /usr/lib/dyld)
+==23561==    by 0x10002AC17: dyld4::Loader::setUpPageInLinking(Diagnostics&, dyld4::RuntimeState&, unsigned long, unsigned long long, dyld3::Array<void const*> const&) const (in /usr/lib/dyld)
+==23561==    by 0x10002B63A: dyld4::Loader::applyFixupsGeneric(Diagnostics&, dyld4::RuntimeState&, unsigned long long, dyld3::Array<void const*> const&, dyld3::Array<void const*> const&, bool, dyld3::Array<dyld4::Loader::MissingFlatLazySymbol> const&) const (in /usr/lib/dyld)
+==23561==    by 0x100030DFC: dyld4::JustInTimeLoader::applyFixups(Diagnostics&, dyld4::RuntimeState&, dyld4::DyldCacheDataConstLazyScopedWriter&, bool) const (in /usr/lib/dyld)
+==23561==    by 0x100016D75: dyld4::prepare(dyld4::APIs&, dyld3::MachOAnalyzer const*) (in /usr/lib/dyld)
+==23561==    by 0x10001631E: (below main) (in /usr/lib/dyld)
+==23561==  Address 0x108113d98 is on thread 1's stack
+==23561==  in frame #1, created by dyld4::setUpPageInLinkingRegions(dyld4::RuntimeState&, dyld4::Loader const*, unsigned long, unsigned short, unsigned short, bool, dyld3::Array<dyld4::PageInLinkingRange> const&, dyld3::Array<void const*> const&) (???:)
+==23561== 
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Param
+   map_with_linking_np(link_info)
+   fun:__map_with_linking_np
+   fun:_ZN5dyld4L25setUpPageInLinkingRegionsERNS_12RuntimeStateEPKNS_6LoaderEmttbRKN5dyld35ArrayINS_18PageInLinkingRangeEEERKNS6_IPKvEE
+   fun:___ZNK5dyld46Loader18setUpPageInLinkingER11DiagnosticsRNS_12RuntimeStateEmyRKN5dyld35ArrayIPKvEE_block_invoke
+   fun:_ZNK5dyld46Loader18setUpPageInLinkingER11DiagnosticsRNS_12RuntimeStateEmyRKN5dyld35ArrayIPKvEE
+   fun:_ZNK5dyld46Loader18applyFixupsGenericER11DiagnosticsRNS_12RuntimeStateEyRKN5dyld35ArrayIPKvEESB_bRKNS6_INS0_21MissingFlatLazySymbolEEE
+   fun:_ZNK5dyld416JustInTimeLoader11applyFixupsER11DiagnosticsRNS_12RuntimeStateERNS_34DyldCacheDataConstLazyScopedWriterEb
+   fun:_ZN5dyld4L7prepareERNS_4APIsEPKN5dyld313MachOAnalyzerE
+   fun:(below main)
+}
+==23561== Invalid write of size 4
+==23561==    at 0x100000855: ??? (in ./push_swap)
+==23561==    by 0x100000F45: ??? (in ./push_swap)
+==23561==    by 0x100016385: (below main) (in /usr/lib/dyld)
+==23561==  Address 0x1007465c4 is 4 bytes inside a block of size 7 alloc'd
+==23561==    at 0x10013DFE0: malloc (in /usr/local/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==23561==    by 0x1000007A3: ??? (in ./push_swap)
+==23561==    by 0x100000F45: ??? (in ./push_swap)
+==23561==    by 0x100016385: (below main) (in /usr/lib/dyld)
+==23561== 
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr4
+   obj:./push_swap
+   obj:./push_swap
+   fun:(below main)
+}
+==23561== Conditional jump or move depends on uninitialised value(s)
+==23561==    at 0x100000720: ??? (in ./push_swap)
+==23561==    by 0x10000088F: ??? (in ./push_swap)
+==23561==    by 0x100000F45: ??? (in ./push_swap)
+==23561==    by 0x100016385: (below main) (in /usr/lib/dyld)
+==23561== 
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Cond
+   obj:./push_swap
+   obj:./push_swap
+   obj:./push_swap
+   fun:(below main)
+}
+==23561== Conditional jump or move depends on uninitialised value(s)
+==23561==    at 0x100000750: ??? (in ./push_swap)
+==23561==    by 0x10000088F: ??? (in ./push_swap)
+==23561==    by 0x100000F45: ??? (in ./push_swap)
+==23561==    by 0x100016385: (below main) (in /usr/lib/dyld)
+==23561== 
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Cond
+   obj:./push_swap
+   obj:./push_swap
+   obj:./push_swap
+   fun:(below main)
+}
+==23561== Invalid read of size 4
+==23561==    at 0x100000716: ??? (in ./push_swap)
+==23561==    by 0x10000088F: ??? (in ./push_swap)
+==23561==    by 0x100000F45: ??? (in ./push_swap)
+==23561==    by 0x100016385: (below main) (in /usr/lib/dyld)
+==23561==  Address 0x1007465c8 is 1 bytes after a block of size 7 alloc'd
+==23561==    at 0x10013DFE0: malloc (in /usr/local/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==23561==    by 0x1000007A3: ??? (in ./push_swap)
+==23561==    by 0x100000F45: ??? (in ./push_swap)
+==23561==    by 0x100016385: (below main) (in /usr/lib/dyld)
+==23561== 
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr4
+   obj:./push_swap
+   obj:./push_swap
+   obj:./push_swap
+   fun:(below main)
+}
+==23561== Invalid read of size 4
+==23561==    at 0x100000746: ??? (in ./push_swap)
+==23561==    by 0x10000088F: ??? (in ./push_swap)
+==23561==    by 0x100000F45: ??? (in ./push_swap)
+==23561==    by 0x100016385: (below main) (in /usr/lib/dyld)
+==23561==  Address 0x1007465c8 is 1 bytes after a block of size 7 alloc'd
+==23561==    at 0x10013DFE0: malloc (in /usr/local/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==23561==    by 0x1000007A3: ??? (in ./push_swap)
+==23561==    by 0x100000F45: ??? (in ./push_swap)
+==23561==    by 0x100016385: (below main) (in /usr/lib/dyld)
+==23561== 
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr4
+   obj:./push_swap
+   obj:./push_swap
+   obj:./push_swap
+   fun:(below main)
+}
+==23561== Invalid read of size 4
+==23561==    at 0x100000761: ??? (in ./push_swap)
+==23561==    by 0x10000088F: ??? (in ./push_swap)
+==23561==    by 0x100000F45: ??? (in ./push_swap)
+==23561==    by 0x100016385: (below main) (in /usr/lib/dyld)
+==23561==  Address 0x1007465c8 is 1 bytes after a block of size 7 alloc'd
+==23561==    at 0x10013DFE0: malloc (in /usr/local/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==23561==    by 0x1000007A3: ??? (in ./push_swap)
+==23561==    by 0x100000F45: ??? (in ./push_swap)
+==23561==    by 0x100016385: (below main) (in /usr/lib/dyld)
+==23561== 
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr4
+   obj:./push_swap
+   obj:./push_swap
+   obj:./push_swap
+   fun:(below main)
+}
+==23561== Conditional jump or move depends on uninitialised value(s)
+==23561==    at 0x7FF809BFFCE5: __vfprintf (in /usr/lib/system/libsystem_c.dylib)
+==23561==    by 0x7FF809C0F8CD: vfprintf_l (in /usr/lib/system/libsystem_c.dylib)
+==23561==    by 0x7FF809C2B7F0: printf (in /usr/lib/system/libsystem_c.dylib)
+==23561==    by 0x100000F86: ??? (in ./push_swap)
+==23561==    by 0x100016385: (below main) (in /usr/lib/dyld)
+==23561== 
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Cond
+   fun:__vfprintf
+   fun:vfprintf_l
+   fun:printf
+   obj:./push_swap
+   fun:(below main)
+}
+==23561== Conditional jump or move depends on uninitialised value(s)
+==23561==    at 0x7FF809C02B1A: __ultoa (in /usr/lib/system/libsystem_c.dylib)
+==23561==    by 0x7FF809BFFE4F: __vfprintf (in /usr/lib/system/libsystem_c.dylib)
+==23561==    by 0x7FF809C0F8CD: vfprintf_l (in /usr/lib/system/libsystem_c.dylib)
+==23561==    by 0x7FF809C2B7F0: printf (in /usr/lib/system/libsystem_c.dylib)
+==23561==    by 0x100000F86: ??? (in ./push_swap)
+==23561==    by 0x100016385: (below main) (in /usr/lib/dyld)
+==23561== 
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Cond
+   fun:__ultoa
+   fun:__vfprintf
+   fun:vfprintf_l
+   fun:printf
+   obj:./push_swap
+   fun:(below main)
+}
+==23561== Invalid read of size 4
+==23561==    at 0x100000F76: ??? (in ./push_swap)
+==23561==    by 0x100016385: (below main) (in /usr/lib/dyld)
+==23561==  Address 0x1007465c8 is 1 bytes after a block of size 7 alloc'd
+==23561==    at 0x10013DFE0: malloc (in /usr/local/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==23561==    by 0x1000007A3: ??? (in ./push_swap)
+==23561==    by 0x100000F45: ??? (in ./push_swap)
+==23561==    by 0x100016385: (below main) (in /usr/lib/dyld)
+==23561== 
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr4
+   obj:./push_swap
+   fun:(below main)
+}
+==23561== 
+==23561== HEAP SUMMARY:
+==23561==     in use at exit: 13,063 bytes in 187 blocks
+==23561==   total heap usage: 199 allocs, 12 frees, 13,835 bytes allocated
+==23561== 
+==23561== 7 bytes in 1 blocks are definitely lost in loss record 1 of 36
+==23561==    at 0x10013DFE0: malloc (in /usr/local/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==23561==    by 0x1000007BE: ??? (in ./push_swap)
+==23561==    by 0x100000F45: ??? (in ./push_swap)
+==23561==    by 0x100016385: (below main) (in /usr/lib/dyld)
+==23561== 
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:malloc
+   obj:./push_swap
+   obj:./push_swap
+   fun:(below main)
+}
+==23561== 12 bytes in 6 blocks are definitely lost in loss record 2 of 36
+==23561==    at 0x10013DFE0: malloc (in /usr/local/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==23561==    by 0x100003C1A: ??? (in ./push_swap)
+==23561==    by 0x100003A5F: ??? (in ./push_swap)
+==23561==    by 0x100000631: ??? (in ./push_swap)
+==23561==    by 0x1000007FE: ??? (in ./push_swap)
+==23561==    by 0x100000F45: ??? (in ./push_swap)
+==23561==    by 0x100016385: (below main) (in /usr/lib/dyld)
+==23561== 
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:malloc
+   obj:./push_swap
+   obj:./push_swap
+   obj:./push_swap
+   obj:./push_swap
+   obj:./push_swap
+   fun:(below main)
+}
+==23561== 48 bytes in 1 blocks are possibly lost in loss record 14 of 36
+==23561==    at 0x10013DFE0: malloc (in /usr/local/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==23561==    by 0x7FF8099A225E: NXCreateMapTable (in /usr/lib/libobjc.A.dylib)
+==23561==    by 0x7FF80998CC18: map_images_nolock (in /usr/lib/libobjc.A.dylib)
+==23561==    by 0x7FF80998BE61: map_images (in /usr/lib/libobjc.A.dylib)
+==23561==    by 0x100024C0E: invocation function for block in dyld4::RuntimeState::setObjCNotifiers(void (*)(unsigned int, char const* const*, mach_header const* const*), void (*)(char const*, mach_header const*), void (*)(char const*, mach_header const*), void (*)(mach_header const*, void*, mach_header const*, void const*), void (*)(unsigned int, _dyld_objc_notify_mapped_info const*), void (*)(_dyld_objc_notify_mapped_info const*))::$_8::operator()() const (in /usr/lib/dyld)
+==23561==    by 0x10001C9CB: dyld4::RuntimeLocks::withLoadersReadLock(void ( block_pointer)()) (in /usr/lib/dyld)
+==23561==    by 0x100021C12: dyld4::RuntimeState::setObjCNotifiers(void (*)(unsigned int, char const* const*, mach_header const* const*), void (*)(char const*, mach_header const*), void (*)(char const*, mach_header const*), void (*)(mach_header const*, void*, mach_header const*, void const*), void (*)(unsigned int, _dyld_objc_notify_mapped_info const*), void (*)(_dyld_objc_notify_mapped_info const*)) (in /usr/lib/dyld)
+==23561==    by 0x10004795F: dyld4::APIs::_dyld_objc_register_callbacks(_dyld_objc_callbacks const*) (in /usr/lib/dyld)
+==23561==    by 0x7FF80998B8E3: _objc_init (in /usr/lib/libobjc.A.dylib)
+==23561==    by 0x7FF809BB4BFF: _os_object_init (in /usr/lib/system/libdispatch.dylib)
+==23561==    by 0x7FF809BC1DF5: libdispatch_init (in /usr/lib/system/libdispatch.dylib)
+==23561==    by 0x7FF816C22891: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+==23561== 
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: possible
+   fun:malloc
+   fun:NXCreateMapTable
+   fun:map_images_nolock
+   fun:map_images
+   fun:___ZZN5dyld412RuntimeState16setObjCNotifiersEPFvjPKPKcPKPK11mach_headerEPFvS2_S7_ESD_PFvS7_PvS7_PKvEPFvjPK29_dyld_objc_notify_mapped_infoEPFvSL_EENK3$_8clEv_block_invoke
+   fun:_ZN5dyld412RuntimeLocks19withLoadersReadLockEU13block_pointerFvvE
+   fun:_ZN5dyld412RuntimeState16setObjCNotifiersEPFvjPKPKcPKPK11mach_headerEPFvS2_S7_ESD_PFvS7_PvS7_PKvEPFvjPK29_dyld_objc_notify_mapped_infoEPFvSL_E
+   fun:_ZN5dyld44APIs29_dyld_objc_register_callbacksEPK20_dyld_objc_callbacks
+   fun:_objc_init
+   fun:_os_object_init
+   fun:libdispatch_init
+   fun:libSystem_initializer
+}
+==23561== 64 bytes in 2 blocks are definitely lost in loss record 20 of 36
+==23561==    at 0x100142271: calloc (in /usr/local/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==23561==    by 0x7FF80998EA01: realizeClassWithoutSwift(objc_class*, objc_class*) (in /usr/lib/libobjc.A.dylib)
+==23561==    by 0x7FF80998EAB3: realizeClassWithoutSwift(objc_class*, objc_class*) (in /usr/lib/libobjc.A.dylib)
+==23561==    by 0x7FF80998EAB3: realizeClassWithoutSwift(objc_class*, objc_class*) (in /usr/lib/libobjc.A.dylib)
+==23561==    by 0x7FF80998D58D: map_images_nolock (in /usr/lib/libobjc.A.dylib)
+==23561==    by 0x7FF80998BE61: map_images (in /usr/lib/libobjc.A.dylib)
+==23561==    by 0x100024C0E: invocation function for block in dyld4::RuntimeState::setObjCNotifiers(void (*)(unsigned int, char const* const*, mach_header const* const*), void (*)(char const*, mach_header const*), void (*)(char const*, mach_header const*), void (*)(mach_header const*, void*, mach_header const*, void const*), void (*)(unsigned int, _dyld_objc_notify_mapped_info const*), void (*)(_dyld_objc_notify_mapped_info const*))::$_8::operator()() const (in /usr/lib/dyld)
+==23561==    by 0x10001C9CB: dyld4::RuntimeLocks::withLoadersReadLock(void ( block_pointer)()) (in /usr/lib/dyld)
+==23561==    by 0x100021C12: dyld4::RuntimeState::setObjCNotifiers(void (*)(unsigned int, char const* const*, mach_header const* const*), void (*)(char const*, mach_header const*), void (*)(char const*, mach_header const*), void (*)(mach_header const*, void*, mach_header const*, void const*), void (*)(unsigned int, _dyld_objc_notify_mapped_info const*), void (*)(_dyld_objc_notify_mapped_info const*)) (in /usr/lib/dyld)
+==23561==    by 0x10004795F: dyld4::APIs::_dyld_objc_register_callbacks(_dyld_objc_callbacks const*) (in /usr/lib/dyld)
+==23561==    by 0x7FF80998B8E3: _objc_init (in /usr/lib/libobjc.A.dylib)
+==23561==    by 0x7FF809BB4BFF: _os_object_init (in /usr/lib/system/libdispatch.dylib)
+==23561== 
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:calloc
+   fun:_ZL24realizeClassWithoutSwiftP10objc_classS0_
+   fun:_ZL24realizeClassWithoutSwiftP10objc_classS0_
+   fun:_ZL24realizeClassWithoutSwiftP10objc_classS0_
+   fun:map_images_nolock
+   fun:map_images
+   fun:___ZZN5dyld412RuntimeState16setObjCNotifiersEPFvjPKPKcPKPK11mach_headerEPFvS2_S7_ESD_PFvS7_PvS7_PKvEPFvjPK29_dyld_objc_notify_mapped_infoEPFvSL_EENK3$_8clEv_block_invoke
+   fun:_ZN5dyld412RuntimeLocks19withLoadersReadLockEU13block_pointerFvvE
+   fun:_ZN5dyld412RuntimeState16setObjCNotifiersEPFvjPKPKcPKPK11mach_headerEPFvS2_S7_ESD_PFvS7_PvS7_PKvEPFvjPK29_dyld_objc_notify_mapped_infoEPFvSL_E
+   fun:_ZN5dyld44APIs29_dyld_objc_register_callbacksEPK20_dyld_objc_callbacks
+   fun:_objc_init
+   fun:_os_object_init
+}
+==23561== 64 bytes in 2 blocks are definitely lost in loss record 21 of 36
+==23561==    at 0x100142271: calloc (in /usr/local/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==23561==    by 0x7FF80998EA01: realizeClassWithoutSwift(objc_class*, objc_class*) (in /usr/lib/libobjc.A.dylib)
+==23561==    by 0x7FF80998EAD6: realizeClassWithoutSwift(objc_class*, objc_class*) (in /usr/lib/libobjc.A.dylib)
+==23561==    by 0x7FF80998EAB3: realizeClassWithoutSwift(objc_class*, objc_class*) (in /usr/lib/libobjc.A.dylib)
+==23561==    by 0x7FF80998EAB3: realizeClassWithoutSwift(objc_class*, objc_class*) (in /usr/lib/libobjc.A.dylib)
+==23561==    by 0x7FF80998D58D: map_images_nolock (in /usr/lib/libobjc.A.dylib)
+==23561==    by 0x7FF80998BE61: map_images (in /usr/lib/libobjc.A.dylib)
+==23561==    by 0x100024C0E: invocation function for block in dyld4::RuntimeState::setObjCNotifiers(void (*)(unsigned int, char const* const*, mach_header const* const*), void (*)(char const*, mach_header const*), void (*)(char const*, mach_header const*), void (*)(mach_header const*, void*, mach_header const*, void const*), void (*)(unsigned int, _dyld_objc_notify_mapped_info const*), void (*)(_dyld_objc_notify_mapped_info const*))::$_8::operator()() const (in /usr/lib/dyld)
+==23561==    by 0x10001C9CB: dyld4::RuntimeLocks::withLoadersReadLock(void ( block_pointer)()) (in /usr/lib/dyld)
+==23561==    by 0x100021C12: dyld4::RuntimeState::setObjCNotifiers(void (*)(unsigned int, char const* const*, mach_header const* const*), void (*)(char const*, mach_header const*), void (*)(char const*, mach_header const*), void (*)(mach_header const*, void*, mach_header const*, void const*), void (*)(unsigned int, _dyld_objc_notify_mapped_info const*), void (*)(_dyld_objc_notify_mapped_info const*)) (in /usr/lib/dyld)
+==23561==    by 0x10004795F: dyld4::APIs::_dyld_objc_register_callbacks(_dyld_objc_callbacks const*) (in /usr/lib/dyld)
+==23561==    by 0x7FF80998B8E3: _objc_init (in /usr/lib/libobjc.A.dylib)
+==23561== 
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:calloc
+   fun:_ZL24realizeClassWithoutSwiftP10objc_classS0_
+   fun:_ZL24realizeClassWithoutSwiftP10objc_classS0_
+   fun:_ZL24realizeClassWithoutSwiftP10objc_classS0_
+   fun:_ZL24realizeClassWithoutSwiftP10objc_classS0_
+   fun:map_images_nolock
+   fun:map_images
+   fun:___ZZN5dyld412RuntimeState16setObjCNotifiersEPFvjPKPKcPKPK11mach_headerEPFvS2_S7_ESD_PFvS7_PvS7_PKvEPFvjPK29_dyld_objc_notify_mapped_infoEPFvSL_EENK3$_8clEv_block_invoke
+   fun:_ZN5dyld412RuntimeLocks19withLoadersReadLockEU13block_pointerFvvE
+   fun:_ZN5dyld412RuntimeState16setObjCNotifiersEPFvjPKPKcPKPK11mach_headerEPFvS2_S7_ESD_PFvS7_PvS7_PKvEPFvjPK29_dyld_objc_notify_mapped_infoEPFvSL_E
+   fun:_ZN5dyld44APIs29_dyld_objc_register_callbacksEPK20_dyld_objc_callbacks
+   fun:_objc_init
+}
+==23561== 160 bytes in 5 blocks are definitely lost in loss record 26 of 36
+==23561==    at 0x100142271: calloc (in /usr/local/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==23561==    by 0x7FF80998EA01: realizeClassWithoutSwift(objc_class*, objc_class*) (in /usr/lib/libobjc.A.dylib)
+==23561==    by 0x7FF80998EAD6: realizeClassWithoutSwift(objc_class*, objc_class*) (in /usr/lib/libobjc.A.dylib)
+==23561==    by 0x7FF80998EAB3: realizeClassWithoutSwift(objc_class*, objc_class*) (in /usr/lib/libobjc.A.dylib)
+==23561==    by 0x7FF80998D58D: map_images_nolock (in /usr/lib/libobjc.A.dylib)
+==23561==    by 0x7FF80998BE61: map_images (in /usr/lib/libobjc.A.dylib)
+==23561==    by 0x100024C0E: invocation function for block in dyld4::RuntimeState::setObjCNotifiers(void (*)(unsigned int, char const* const*, mach_header const* const*), void (*)(char const*, mach_header const*), void (*)(char const*, mach_header const*), void (*)(mach_header const*, void*, mach_header const*, void const*), void (*)(unsigned int, _dyld_objc_notify_mapped_info const*), void (*)(_dyld_objc_notify_mapped_info const*))::$_8::operator()() const (in /usr/lib/dyld)
+==23561==    by 0x10001C9CB: dyld4::RuntimeLocks::withLoadersReadLock(void ( block_pointer)()) (in /usr/lib/dyld)
+==23561==    by 0x100021C12: dyld4::RuntimeState::setObjCNotifiers(void (*)(unsigned int, char const* const*, mach_header const* const*), void (*)(char const*, mach_header const*), void (*)(char const*, mach_header const*), void (*)(mach_header const*, void*, mach_header const*, void const*), void (*)(unsigned int, _dyld_objc_notify_mapped_info const*), void (*)(_dyld_objc_notify_mapped_info const*)) (in /usr/lib/dyld)
+==23561==    by 0x10004795F: dyld4::APIs::_dyld_objc_register_callbacks(_dyld_objc_callbacks const*) (in /usr/lib/dyld)
+==23561==    by 0x7FF80998B8E3: _objc_init (in /usr/lib/libobjc.A.dylib)
+==23561==    by 0x7FF809BB4BFF: _os_object_init (in /usr/lib/system/libdispatch.dylib)
+==23561== 
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:calloc
+   fun:_ZL24realizeClassWithoutSwiftP10objc_classS0_
+   fun:_ZL24realizeClassWithoutSwiftP10objc_classS0_
+   fun:_ZL24realizeClassWithoutSwiftP10objc_classS0_
+   fun:map_images_nolock
+   fun:map_images
+   fun:___ZZN5dyld412RuntimeState16setObjCNotifiersEPFvjPKPKcPKPK11mach_headerEPFvS2_S7_ESD_PFvS7_PvS7_PKvEPFvjPK29_dyld_objc_notify_mapped_infoEPFvSL_EENK3$_8clEv_block_invoke
+   fun:_ZN5dyld412RuntimeLocks19withLoadersReadLockEU13block_pointerFvvE
+   fun:_ZN5dyld412RuntimeState16setObjCNotifiersEPFvjPKPKcPKPK11mach_headerEPFvS2_S7_ESD_PFvS7_PvS7_PKvEPFvjPK29_dyld_objc_notify_mapped_infoEPFvSL_E
+   fun:_ZN5dyld44APIs29_dyld_objc_register_callbacksEPK20_dyld_objc_callbacks
+   fun:_objc_init
+   fun:_os_object_init
+}
+==23561== 208 (160 direct, 48 indirect) bytes in 5 blocks are definitely lost in loss record 27 of 36
+==23561==    at 0x100142271: calloc (in /usr/local/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==23561==    by 0x7FF80998EA01: realizeClassWithoutSwift(objc_class*, objc_class*) (in /usr/lib/libobjc.A.dylib)
+==23561==    by 0x7FF80998EAB3: realizeClassWithoutSwift(objc_class*, objc_class*) (in /usr/lib/libobjc.A.dylib)
+==23561==    by 0x7FF80998D58D: map_images_nolock (in /usr/lib/libobjc.A.dylib)
+==23561==    by 0x7FF80998BE61: map_images (in /usr/lib/libobjc.A.dylib)
+==23561==    by 0x100024C0E: invocation function for block in dyld4::RuntimeState::setObjCNotifiers(void (*)(unsigned int, char const* const*, mach_header const* const*), void (*)(char const*, mach_header const*), void (*)(char const*, mach_header const*), void (*)(mach_header const*, void*, mach_header const*, void const*), void (*)(unsigned int, _dyld_objc_notify_mapped_info const*), void (*)(_dyld_objc_notify_mapped_info const*))::$_8::operator()() const (in /usr/lib/dyld)
+==23561==    by 0x10001C9CB: dyld4::RuntimeLocks::withLoadersReadLock(void ( block_pointer)()) (in /usr/lib/dyld)
+==23561==    by 0x100021C12: dyld4::RuntimeState::setObjCNotifiers(void (*)(unsigned int, char const* const*, mach_header const* const*), void (*)(char const*, mach_header const*), void (*)(char const*, mach_header const*), void (*)(mach_header const*, void*, mach_header const*, void const*), void (*)(unsigned int, _dyld_objc_notify_mapped_info const*), void (*)(_dyld_objc_notify_mapped_info const*)) (in /usr/lib/dyld)
+==23561==    by 0x10004795F: dyld4::APIs::_dyld_objc_register_callbacks(_dyld_objc_callbacks const*) (in /usr/lib/dyld)
+==23561==    by 0x7FF80998B8E3: _objc_init (in /usr/lib/libobjc.A.dylib)
+==23561==    by 0x7FF809BB4BFF: _os_object_init (in /usr/lib/system/libdispatch.dylib)
+==23561==    by 0x7FF809BC1DF5: libdispatch_init (in /usr/lib/system/libdispatch.dylib)
+==23561== 
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:calloc
+   fun:_ZL24realizeClassWithoutSwiftP10objc_classS0_
+   fun:_ZL24realizeClassWithoutSwiftP10objc_classS0_
+   fun:map_images_nolock
+   fun:map_images
+   fun:___ZZN5dyld412RuntimeState16setObjCNotifiersEPFvjPKPKcPKPK11mach_headerEPFvS2_S7_ESD_PFvS7_PvS7_PKvEPFvjPK29_dyld_objc_notify_mapped_infoEPFvSL_EENK3$_8clEv_block_invoke
+   fun:_ZN5dyld412RuntimeLocks19withLoadersReadLockEU13block_pointerFvvE
+   fun:_ZN5dyld412RuntimeState16setObjCNotifiersEPFvjPKPKcPKPK11mach_headerEPFvS2_S7_ESD_PFvS7_PvS7_PKvEPFvjPK29_dyld_objc_notify_mapped_infoEPFvSL_E
+   fun:_ZN5dyld44APIs29_dyld_objc_register_callbacksEPK20_dyld_objc_callbacks
+   fun:_objc_init
+   fun:_os_object_init
+   fun:libdispatch_init
+}
+==23561== 528 bytes in 1 blocks are possibly lost in loss record 31 of 36
+==23561==    at 0x10013DFE0: malloc (in /usr/local/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==23561==    by 0x7FF8099A225E: NXCreateMapTable (in /usr/lib/libobjc.A.dylib)
+==23561==    by 0x7FF80998E0FB: protocols() (in /usr/lib/libobjc.A.dylib)
+==23561==    by 0x7FF80998D138: map_images_nolock (in /usr/lib/libobjc.A.dylib)
+==23561==    by 0x7FF80998BE61: map_images (in /usr/lib/libobjc.A.dylib)
+==23561==    by 0x100024C0E: invocation function for block in dyld4::RuntimeState::setObjCNotifiers(void (*)(unsigned int, char const* const*, mach_header const* const*), void (*)(char const*, mach_header const*), void (*)(char const*, mach_header const*), void (*)(mach_header const*, void*, mach_header const*, void const*), void (*)(unsigned int, _dyld_objc_notify_mapped_info const*), void (*)(_dyld_objc_notify_mapped_info const*))::$_8::operator()() const (in /usr/lib/dyld)
+==23561==    by 0x10001C9CB: dyld4::RuntimeLocks::withLoadersReadLock(void ( block_pointer)()) (in /usr/lib/dyld)
+==23561==    by 0x100021C12: dyld4::RuntimeState::setObjCNotifiers(void (*)(unsigned int, char const* const*, mach_header const* const*), void (*)(char const*, mach_header const*), void (*)(char const*, mach_header const*), void (*)(mach_header const*, void*, mach_header const*, void const*), void (*)(unsigned int, _dyld_objc_notify_mapped_info const*), void (*)(_dyld_objc_notify_mapped_info const*)) (in /usr/lib/dyld)
+==23561==    by 0x10004795F: dyld4::APIs::_dyld_objc_register_callbacks(_dyld_objc_callbacks const*) (in /usr/lib/dyld)
+==23561==    by 0x7FF80998B8E3: _objc_init (in /usr/lib/libobjc.A.dylib)
+==23561==    by 0x7FF809BB4BFF: _os_object_init (in /usr/lib/system/libdispatch.dylib)
+==23561==    by 0x7FF809BC1DF5: libdispatch_init (in /usr/lib/system/libdispatch.dylib)
+==23561== 
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: possible
+   fun:malloc
+   fun:NXCreateMapTable
+   fun:_ZL9protocolsv
+   fun:map_images_nolock
+   fun:map_images
+   fun:___ZZN5dyld412RuntimeState16setObjCNotifiersEPFvjPKPKcPKPK11mach_headerEPFvS2_S7_ESD_PFvS7_PvS7_PKvEPFvjPK29_dyld_objc_notify_mapped_infoEPFvSL_EENK3$_8clEv_block_invoke
+   fun:_ZN5dyld412RuntimeLocks19withLoadersReadLockEU13block_pointerFvvE
+   fun:_ZN5dyld412RuntimeState16setObjCNotifiersEPFvjPKPKcPKPK11mach_headerEPFvS2_S7_ESD_PFvS7_PvS7_PKvEPFvjPK29_dyld_objc_notify_mapped_infoEPFvSL_E
+   fun:_ZN5dyld44APIs29_dyld_objc_register_callbacksEPK20_dyld_objc_callbacks
+   fun:_objc_init
+   fun:_os_object_init
+   fun:libdispatch_init
+}
+==23561== 1,952 bytes in 61 blocks are definitely lost in loss record 34 of 36
+==23561==    at 0x100142271: calloc (in /usr/local/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==23561==    by 0x7FF80998EA01: realizeClassWithoutSwift(objc_class*, objc_class*) (in /usr/lib/libobjc.A.dylib)
+==23561==    by 0x7FF80998D58D: map_images_nolock (in /usr/lib/libobjc.A.dylib)
+==23561==    by 0x7FF80998BE61: map_images (in /usr/lib/libobjc.A.dylib)
+==23561==    by 0x100024C0E: invocation function for block in dyld4::RuntimeState::setObjCNotifiers(void (*)(unsigned int, char const* const*, mach_header const* const*), void (*)(char const*, mach_header const*), void (*)(char const*, mach_header const*), void (*)(mach_header const*, void*, mach_header const*, void const*), void (*)(unsigned int, _dyld_objc_notify_mapped_info const*), void (*)(_dyld_objc_notify_mapped_info const*))::$_8::operator()() const (in /usr/lib/dyld)
+==23561==    by 0x10001C9CB: dyld4::RuntimeLocks::withLoadersReadLock(void ( block_pointer)()) (in /usr/lib/dyld)
+==23561==    by 0x100021C12: dyld4::RuntimeState::setObjCNotifiers(void (*)(unsigned int, char const* const*, mach_header const* const*), void (*)(char const*, mach_header const*), void (*)(char const*, mach_header const*), void (*)(mach_header const*, void*, mach_header const*, void const*), void (*)(unsigned int, _dyld_objc_notify_mapped_info const*), void (*)(_dyld_objc_notify_mapped_info const*)) (in /usr/lib/dyld)
+==23561==    by 0x10004795F: dyld4::APIs::_dyld_objc_register_callbacks(_dyld_objc_callbacks const*) (in /usr/lib/dyld)
+==23561==    by 0x7FF80998B8E3: _objc_init (in /usr/lib/libobjc.A.dylib)
+==23561==    by 0x7FF809BB4BFF: _os_object_init (in /usr/lib/system/libdispatch.dylib)
+==23561==    by 0x7FF809BC1DF5: libdispatch_init (in /usr/lib/system/libdispatch.dylib)
+==23561==    by 0x7FF816C22891: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+==23561== 
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:calloc
+   fun:_ZL24realizeClassWithoutSwiftP10objc_classS0_
+   fun:map_images_nolock
+   fun:map_images
+   fun:___ZZN5dyld412RuntimeState16setObjCNotifiersEPFvjPKPKcPKPK11mach_headerEPFvS2_S7_ESD_PFvS7_PvS7_PKvEPFvjPK29_dyld_objc_notify_mapped_infoEPFvSL_EENK3$_8clEv_block_invoke
+   fun:_ZN5dyld412RuntimeLocks19withLoadersReadLockEU13block_pointerFvvE
+   fun:_ZN5dyld412RuntimeState16setObjCNotifiersEPFvjPKPKcPKPK11mach_headerEPFvS2_S7_ESD_PFvS7_PvS7_PKvEPFvjPK29_dyld_objc_notify_mapped_infoEPFvSL_E
+   fun:_ZN5dyld44APIs29_dyld_objc_register_callbacksEPK20_dyld_objc_callbacks
+   fun:_objc_init
+   fun:_os_object_init
+   fun:libdispatch_init
+   fun:libSystem_initializer
+}
+==23561== 1,952 bytes in 61 blocks are definitely lost in loss record 35 of 36
+==23561==    at 0x100142271: calloc (in /usr/local/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==23561==    by 0x7FF80998EA01: realizeClassWithoutSwift(objc_class*, objc_class*) (in /usr/lib/libobjc.A.dylib)
+==23561==    by 0x7FF80998EAD6: realizeClassWithoutSwift(objc_class*, objc_class*) (in /usr/lib/libobjc.A.dylib)
+==23561==    by 0x7FF80998D58D: map_images_nolock (in /usr/lib/libobjc.A.dylib)
+==23561==    by 0x7FF80998BE61: map_images (in /usr/lib/libobjc.A.dylib)
+==23561==    by 0x100024C0E: invocation function for block in dyld4::RuntimeState::setObjCNotifiers(void (*)(unsigned int, char const* const*, mach_header const* const*), void (*)(char const*, mach_header const*), void (*)(char const*, mach_header const*), void (*)(mach_header const*, void*, mach_header const*, void const*), void (*)(unsigned int, _dyld_objc_notify_mapped_info const*), void (*)(_dyld_objc_notify_mapped_info const*))::$_8::operator()() const (in /usr/lib/dyld)
+==23561==    by 0x10001C9CB: dyld4::RuntimeLocks::withLoadersReadLock(void ( block_pointer)()) (in /usr/lib/dyld)
+==23561==    by 0x100021C12: dyld4::RuntimeState::setObjCNotifiers(void (*)(unsigned int, char const* const*, mach_header const* const*), void (*)(char const*, mach_header const*), void (*)(char const*, mach_header const*), void (*)(mach_header const*, void*, mach_header const*, void const*), void (*)(unsigned int, _dyld_objc_notify_mapped_info const*), void (*)(_dyld_objc_notify_mapped_info const*)) (in /usr/lib/dyld)
+==23561==    by 0x10004795F: dyld4::APIs::_dyld_objc_register_callbacks(_dyld_objc_callbacks const*) (in /usr/lib/dyld)
+==23561==    by 0x7FF80998B8E3: _objc_init (in /usr/lib/libobjc.A.dylib)
+==23561==    by 0x7FF809BB4BFF: _os_object_init (in /usr/lib/system/libdispatch.dylib)
+==23561==    by 0x7FF809BC1DF5: libdispatch_init (in /usr/lib/system/libdispatch.dylib)
+==23561== 
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:calloc
+   fun:_ZL24realizeClassWithoutSwiftP10objc_classS0_
+   fun:_ZL24realizeClassWithoutSwiftP10objc_classS0_
+   fun:map_images_nolock
+   fun:map_images
+   fun:___ZZN5dyld412RuntimeState16setObjCNotifiersEPFvjPKPKcPKPK11mach_headerEPFvS2_S7_ESD_PFvS7_PvS7_PKvEPFvjPK29_dyld_objc_notify_mapped_infoEPFvSL_EENK3$_8clEv_block_invoke
+   fun:_ZN5dyld412RuntimeLocks19withLoadersReadLockEU13block_pointerFvvE
+   fun:_ZN5dyld412RuntimeState16setObjCNotifiersEPFvjPKPKcPKPK11mach_headerEPFvS2_S7_ESD_PFvS7_PvS7_PKvEPFvjPK29_dyld_objc_notify_mapped_infoEPFvSL_E
+   fun:_ZN5dyld44APIs29_dyld_objc_register_callbacksEPK20_dyld_objc_callbacks
+   fun:_objc_init
+   fun:_os_object_init
+   fun:libdispatch_init
+}
+==23561== LEAK SUMMARY:
+==23561==    definitely lost: 4,371 bytes in 143 blocks
+==23561==    indirectly lost: 48 bytes in 1 blocks
+==23561==      possibly lost: 576 bytes in 2 blocks
+==23561==    still reachable: 8,068 bytes in 41 blocks
+==23561==         suppressed: 0 bytes in 0 blocks
+==23561== Reachable blocks (those to which a pointer was found) are not shown.
+==23561== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==23561== 
+==23561== Use --track-origins=yes to see where uninitialised values come from
+==23561== For lists of detected and suppressed errors, rerun with: -s
+==23561== ERROR SUMMARY: 37 errors from 20 contexts (suppressed: 125 from 39)

@@ -1,6 +1,6 @@
 NAME	= push_swap
 CC		= cc
-FLAGS	= -Wall -Werror -Wextra
+FLAGS	= -Wall -Werror -Wextra -g
 LIBFT	= ./libft/libft.a
 SRCS	= ${wildcard *.c}
 OBJS	= ${SRCS:.c=.o}
@@ -33,4 +33,7 @@ norm:
 	norminette -R CheckForbiddenSourceHeader ${SRCS}
 	norminette -R CheckDefine *.h
 
-.PHONY: all re clean fclean norm bonus
+leaks: $(NAME)
+	leaks --atExit -- ./$(NAME) "1 2 3 4 5 6"
+
+.PHONY: all re clean fclean norm bonus leaks

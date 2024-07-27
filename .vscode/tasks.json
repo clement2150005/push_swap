@@ -46,7 +46,9 @@
                 "${workspaceFolder}/operations2.c",
                 "${workspaceFolder}/operations3.c",
                 "${workspaceFolder}/operations_utils.c",
-                "${workspaceFolder}/push_swap_utils.c",  // Add this line
+				"${workspaceFolder}/push_swap_utils.c",
+				"${workspaceFolder}/error_check.c",
+                "${workspaceFolder}/initialize.c",  // Add this line
                 "-L${workspaceFolder}/libft",
                 "-lft",
                 "-o",
