@@ -6,7 +6,7 @@
 /*   By: ccolin <ccolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/27 08:42:33 by ccolin            #+#    #+#             */
-/*   Updated: 2024/07/27 15:44:01 by ccolin           ###   ########.fr       */
+/*   Updated: 2024/07/28 12:33:34 by ccolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,18 +63,18 @@ void	ft_ps_initialize(int argc, char **argv, t_stacks *stacks)
 	int		arrsize;
 	char	**array;
 
-	stacks->a = malloc(sizeof(int) * (argc - 1));
-	stacks->b = malloc(sizeof(int) * (argc - 1));
-	if (!stacks->a || !stacks->b)
-		return ;
 	arrsize = 0;
 	array = ft_set_array(argc, argv);
 	while (array[arrsize])
 		arrsize++;
+	stacks->a = malloc(sizeof(int) * (arrsize));
+	stacks->b = malloc(sizeof(int) * (arrsize));
+	if (!stacks->a || !stacks->b)
+		return ;
 	i = 0;
 	while (i < arrsize)
 	{
-		stacks->a[i] = ft_atoi(array[i]);
+		stacks->a[i] = (int)ft_char_to_long(array[i]);
 		i++;
 	}
 	ft_freedoublearray(array);
