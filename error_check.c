@@ -6,7 +6,7 @@
 /*   By: ccolin <ccolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/27 11:40:27 by ccolin            #+#    #+#             */
-/*   Updated: 2024/07/28 14:15:16 by ccolin           ###   ########.fr       */
+/*   Updated: 2024/07/28 15:14:53 by ccolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,13 @@ int	ft_isduplicate(char **array)
 		{
 			if (ft_atoi((const char *)array[i]) == \
 				ft_atoi((const char *)array[j]))
-				return (1);
+				return (0);
 			j++;
 		}
 		i++;
 		j = i + 1;
 	}
-	return (0);
+	return (1);
 }
 
 int	ft_isnumber(char **array)
@@ -49,18 +49,18 @@ int	ft_isnumber(char **array)
 		{
 			j++;
 			if (!array[i][j])
-				return (1);
+				return (0);
 		}
 		while (array[i][j])
 		{
 			if (!ft_isdigit((int)array[i][j]))
-				return (1);
+				return (0);
 			j++;
 		}
 		j = 0;
 		i++;
 	}
-	return (0);
+	return (1);
 }
 
 long long	ft_char_to_long(char *str)
@@ -93,9 +93,9 @@ int	ft_islimits(char **array)
 	{
 		nbr = ft_char_to_long(array[i++]);
 		if (nbr > INT_MAX || nbr < INT_MIN)
-			return (1);
+			return (0);
 	}
-	return (0);
+	return (1);
 }
 
 int	ft_error_check(int argc, char **argv)
@@ -103,15 +103,15 @@ int	ft_error_check(int argc, char **argv)
 	char	**array;
 
 	if (argc <= 1)
-		return (1);
+		return (0);
 	array = ft_set_array(argc, argv);
-	if (ft_isnumber(array) || ft_islimits(array) || \
-	ft_isduplicate(array))
+	if (!ft_isnumber(array) || !ft_islimits(array) || \
+	!ft_isduplicate(array))
 	{
 		ft_freedoublearray(array);
 		ft_putstr_fd("Error\n", 2);
-		return (1);
+		return (0);
 	}
 	ft_freedoublearray(array);
-	return (0);
+	return (1);
 }

@@ -6,10 +6,13 @@
 /*   By: ccolin <ccolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 11:23:52 by ccolin            #+#    #+#             */
-/*   Updated: 2024/07/28 13:11:40 by ccolin           ###   ########.fr       */
+/*   Updated: 2024/07/28 17:50:55 by ccolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+void	ft_push_swap(t_stacks *stacks)
+{
 
+}
