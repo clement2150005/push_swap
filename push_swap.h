@@ -6,7 +6,7 @@
 /*   By: ccolin <ccolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 09:35:56 by ccolin            #+#    #+#             */
-/*   Updated: 2024/08/01 12:09:11 by ccolin           ###   ########.fr       */
+/*   Updated: 2024/08/01 15:26:06 by ccolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,12 @@ typedef struct stacks
 	size_t	size_a;
 	size_t	size_b;
 }		t_stacks;
+
+typedef struct target
+{
+	int	b;
+	int	difference;
+}		t_target;
 
 
 void	print_stacks(t_stacks *stacks);
