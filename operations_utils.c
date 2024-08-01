@@ -6,7 +6,7 @@
 /*   By: ccolin <ccolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 13:51:56 by ccolin            #+#    #+#             */
-/*   Updated: 2024/07/27 09:04:23 by ccolin           ###   ########.fr       */
+/*   Updated: 2024/08/01 11:07:48 by ccolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,13 @@ int	*ft_remove_first_element(int *a, int size_a)
 
 	i = 0;
 	j = 1;
-	new_a = malloc(sizeof(int) * size_a + 1);
+	if (size_a <= 1)
+	{
+		free(a);
+		new_a = malloc(0);
+		return new_a;
+	}
+	new_a = malloc(sizeof(int) * (size_a - 1));
 	if (!new_a)
 		return (NULL);
 	while (j < size_a)

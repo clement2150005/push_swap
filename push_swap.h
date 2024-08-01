@@ -6,7 +6,7 @@
 /*   By: ccolin <ccolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 09:35:56 by ccolin            #+#    #+#             */
-/*   Updated: 2024/07/28 17:28:18 by ccolin           ###   ########.fr       */
+/*   Updated: 2024/08/01 12:09:11 by ccolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void	print_stacks(t_stacks *stacks);
 void		ft_ps_initialize(int argc, char **argv, t_stacks *stacks);
 int			*ft_push_top_element(int *a, int *b, int size_b);
 int			*ft_remove_first_element(int *a, int size_a);
+void		ft_rotate_to_completion(t_stacks *stacks);
 int			ft_error_check(int argc, char **argv);
 char		**ft_set_array(int argc, char **argv);
 int			ft_is_sorted(int *array, int size);
@@ -54,6 +55,7 @@ void		ft_set_min_max(t_stacks *stacks);
 void		ft_freedoublearray(char **array);
 int			ft_is_finished(t_stacks *stacks);
 void		ft_free_stacks(t_stacks *stacks);
+void		ft_simple_sort(t_stacks *stacks);
 void		ft_push_swap(t_stacks *stacks);
 int			ft_swap(int *a, size_t size);
 void		ft_rrotate(int *a, size_t b);
@@ -74,5 +76,6 @@ void		ft_pb(t_stacks *stacks);
 int			ft_ss(t_stacks *stacks);
 void		ft_sa(t_stacks *stacks);
 void		ft_sb(t_stacks *stacks);
+
 
 #endif
