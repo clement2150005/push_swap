@@ -6,7 +6,7 @@
 /*   By: ccolin <ccolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 11:23:52 by ccolin            #+#    #+#             */
-/*   Updated: 2024/08/01 18:18:56 by ccolin           ###   ########.fr       */
+/*   Updated: 2024/08/02 14:44:50 by ccolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,14 @@ int	ft_target(int a, int *b, size_t size)
 	i = 0;
 	lowest_diff = a - b[i];
 	if (lowest_diff < 0)
-		lowest_diff = - lowest_diff;
+		lowest_diff = -lowest_diff;
 	result = 0;
 	i++;
 	while (i < (int)size)
 	{
 		new_diff = a - b[i];
 		if (new_diff < 0)
-		new_diff = - new_diff;
+		new_diff = -new_diff;
 		if (new_diff < lowest_diff)
 		{
 			lowest_diff = new_diff;
@@ -74,26 +74,124 @@ int	*ft_find_targets(t_stacks *stacks)
 		targets[i] = ft_target(stacks->a[i], stacks->b, stacks->size_b);
 		i++;
 	}
+	print_array(targets,  stacks->size_a);
 	return (targets);
 }
 
-int	*ft_push_cost(int *targets, t_stacks *stacks)
+int	ft_cost_both_up(int a, int b)
 {
-	
+	int	cost;
+
+	cost = 0;
+	while (a-- > 0 && b-- < 0)
+		cost++;
+	if (a != 0)
+		while (a-- != 0)
+			cost++;
+	if (b != 0)
+		while (b-- != 0)
+			cost++;
+	return (cost);
+}
+
+int	ft_cost_both_down(int a, int b, t_stacks *stacks)
+{
+	int	cost;
+
+	cost = 0;
+	while (a++ < (int)stacks->size_a + 1 && b++ < (int)stacks->size_b + 1)
+		cost++;
+	if (a != (int)stacks->size_a + 1)
+		while (a++ != (int)stacks->size_a + 1)
+			cost++;
+	if (b != (int)stacks->size_b + 1)
+		while (b++ != (int)stacks->size_b + 1)
+			cost++;
+	return (cost);
+}
+
+int	ft_cost_up_down(int a, int b, t_stacks *stacks)
+{
+	int	cost;
+
+	cost = 0;
+	if (a > ((int)stacks->size_a / 2))
+		while (a++ < (int)stacks->size_a + 1)
+			cost++;
+	if (a < ((int)stacks->size_a / 2))
+		while (a-- < 0)
+			cost++;
+	if (b > ((int)stacks->size_b / 2))
+		while (b++ < (int)stacks->size_b + 1)
+			cost++;
+	if (b < ((int)stacks->size_b / 2))
+		while (b-- < 0)
+			cost++;
+	return (cost);
+}
+
+int	ft_newcost1(int new_cost, int *target, int i, int *targets)
+{
+	target[0] = i;
+	target[2] = targets[i];
+	target[2] = 3;
+	return (new_cost);
+}
+int	ft_newcost2(int new_cost, int *target, int i, int *targets)
+{
+	target[0] = i;
+	target[2] = targets[i];
+	target[2] = 3;
+	return (new_cost);
+}
+
+int	ft_newcost3(int new_cost, int *target, int i, int *targets)
+{
+	target[0] = i;
+	target[2] = targets[i];
+	target[2] = 3;
+	return (new_cost);
+}
+
+int	*ft_push_cost(int *targets, t_stacks *stacks, int *target)
+{
+	int	cost;
+	int	new_cost;
+	int	i;
+
+	i = 0;
+	cost = ft_cost_up_down(i, targets[i], stacks);
+	while (i++ < (int)stacks->size_a)
+	{
+		new_cost = ft_cost_up_down(i, targets[i], stacks);
+		if (new_cost < cost)
+			cost = ft_newcost1(new_cost, target, i, targets);
+		new_cost = ft_cost_both_up(i, targets[i]);
+		if (new_cost < cost)
+			cost = ft_newcost2(new_cost, target, i, targets);
+		new_cost = ft_cost_both_down(i, targets[i], stacks);
+		if (new_cost < cost)
+			cost = ft_newcost3(new_cost, target, i, targets);
+	}
+	return (target);
 }
 
 void	ft_pushsort_to_b(t_stacks *stacks)
 {
 	int	*target;
+	int	*targets;
 
+	PB
+	PB
+	targets = ft_find_targets(stacks);
 	target = malloc(sizeof(int) * 3);
 	if (!target)
-		return (NULL);
-	PB
-	PB
+		return ;
 	if (stacks->b[0] < stacks->b[1])
 		RA
-
+	target = ft_push_cost(targets, stacks, target);
+	print_array(target, 3);
+	free(targets);
 }
 
 // void	ft_pushsort_to_a(t_stacks *stacks)

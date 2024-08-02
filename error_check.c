@@ -6,7 +6,7 @@
 /*   By: ccolin <ccolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/27 11:40:27 by ccolin            #+#    #+#             */
-/*   Updated: 2024/07/28 15:14:53 by ccolin           ###   ########.fr       */
+/*   Updated: 2024/08/02 15:31:12 by ccolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ int	ft_isnumber(char **array)
 		return (1);
 	while (array[i])
 	{
+		j = 0;
 		if (array[i][j] == '-')
 		{
 			j++;
@@ -57,7 +58,6 @@ int	ft_isnumber(char **array)
 				return (0);
 			j++;
 		}
-		j = 0;
 		i++;
 	}
 	return (1);
