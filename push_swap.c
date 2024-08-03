@@ -6,7 +6,7 @@
 /*   By: ccolin <ccolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 11:23:52 by ccolin            #+#    #+#             */
-/*   Updated: 2024/08/03 11:40:56 by ccolin           ###   ########.fr       */
+/*   Updated: 2024/08/03 16:21:10 by ccolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -219,6 +219,7 @@ void	ft_pushsort_to_b(t_stacks *stacks)
 	PB
 	targets = ft_find_targets(stacks);
 	target = malloc(sizeof(int) * 3);
+	ft_memset(target, 0, 3);
 	if (!target)
 		return ;
 	ft_memset(target, 0, sizeof(int) * 3);
