@@ -1,6 +1,6 @@
 NAME	= push_swap
 CC		= cc
-FLAGS	= -Wall -Werror -Wextra -g -fsanitize=address -fno-omit-frame-pointer
+FLAGS	= -Wall -Werror -Wextra -g# -fsanitize=address -fno-omit-frame-pointer
 LIBFT	= ./libft/libft.a
 SRCS	= ${wildcard *.c}
 OBJS	= ${SRCS:.c=.o}

@@ -6,7 +6,7 @@
 /*   By: ccolin <ccolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 11:23:52 by ccolin            #+#    #+#             */
-/*   Updated: 2024/08/03 16:21:10 by ccolin           ###   ########.fr       */
+/*   Updated: 2024/08/03 17:10:36 by ccolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,7 @@ int	ft_cost_both_down(int a, int b, t_stacks *stacks)
 			cost++;
 		}
 	if (b != (int)stacks->size_b + 1)
-		while (b++ != (int)stacks->size_b + 1)
+		while (b != (int)stacks->size_b + 1)
 		{
 			b++;
 			cost++;
@@ -166,22 +166,22 @@ int	ft_cost_up_down(int a, int b, t_stacks *stacks)
 int	ft_newcost1(int new_cost, int *target, int i, int *targets)
 {
 	target[0] = i;
-	target[2] = targets[i];
+	target[1] = targets[i];
 	target[2] = 1;
 	return (new_cost);
 }
 int	ft_newcost2(int new_cost, int *target, int i, int *targets)
 {
 	target[0] = i;
-	target[2] = targets[i];
-	target[2] = 3;
+	target[1] = targets[i];
+	target[2] = 2;
 	return (new_cost);
 }
 
 int	ft_newcost3(int new_cost, int *target, int i, int *targets)
 {
 	target[0] = i;
-	target[2] = targets[i];
+	target[1] = targets[i];
 	target[2] = 3;
 	return (new_cost);
 }
@@ -210,6 +210,21 @@ int	*ft_push_cost(int *targets, t_stacks *stacks, int *target)
 	return (target);
 }
 
+void	ft_up_down(t_stacks *stacks, int *target)
+{
+
+}
+
+void	ft_both_up(t_stacks *stacks, int *target)
+{
+	
+}
+
+void	ft_both_down(t_stacks *stacks, int *target)
+{
+	
+}
+
 void	ft_pushsort_to_b(t_stacks *stacks)
 {
 	int	*target;
@@ -217,18 +232,25 @@ void	ft_pushsort_to_b(t_stacks *stacks)
 
 	PB
 	PB
+	if (stacks->b[0] < stacks->b[1])
+		RB
 	targets = ft_find_targets(stacks);
 	target = malloc(sizeof(int) * 3);
 	ft_memset(target, 0, 3);
 	if (!target)
 		return ;
 	ft_memset(target, 0, sizeof(int) * 3);
-	if (stacks->b[0] < stacks->b[1])
-		RB
-	target = ft_push_cost(targets, stacks, target);
 	printf("target\n");
+	target = ft_push_cost(targets, stacks, target);
 	print_array(target, 3);
+	if (target[2] == 1)
+		ft_up_down(stacks, target);
+	if (target[2] == 2)
+		ft_both_up(stacks, target);
+	if (target[2] == 3)
+		ft_both_down(stacks, target);
 	free(targets);
+	free(target);
 }
 
 // void	ft_pushsort_to_a(t_stacks *stacks)
