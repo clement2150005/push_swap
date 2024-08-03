@@ -6,7 +6,7 @@
 /*   By: ccolin <ccolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/27 08:42:33 by ccolin            #+#    #+#             */
-/*   Updated: 2024/08/02 16:13:26 by ccolin           ###   ########.fr       */
+/*   Updated: 2024/08/03 11:17:01 by ccolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ char	**ft_set_array(int argc, char **argv)
 				return (NULL);
 			ft_strlcpy(array[i], argv[i + 1], ft_strlen(argv[i + 1]) + 1);
 			i++;
+			array[i] = NULL;
 		}
 	}
-	array[i] = NULL;
 	return (array);
 }
 
