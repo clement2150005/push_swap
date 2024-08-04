@@ -6,35 +6,61 @@
 /*   By: ccolin <ccolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 11:23:52 by ccolin            #+#    #+#             */
-/*   Updated: 2024/08/04 12:59:23 by ccolin           ###   ########.fr       */
+/*   Updated: 2024/08/04 16:43:45 by ccolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_target(int a, int *b, size_t size)
+int	ft_max(int *b, size_t size)
 {
-	int	i;
-	int	lowest_diff;
-	int	new_diff;
+	int i;
+	int	max;
 	int	result;
 
 	i = 0;
-	lowest_diff = a - b[i];
-	if (lowest_diff < 0)
-		lowest_diff = -lowest_diff;
-	result = 0;
-	i++;
-	while (i < (int)size)
-	{
-		new_diff = a - b[i];
-		if (new_diff < 0)
-		new_diff = -new_diff;
-		if (new_diff < lowest_diff)
+	max = b[i];
+	result = i;
+	while (++i < (int)size)
+		if (max < b[i])
 		{
-			lowest_diff = new_diff;
+			max = b[i];
 			result = i;
 		}
+	return (result);
+}
+
+int	ft_is_b_lower_than_a(int a, int *b, size_t size)
+{
+	int	i;
+
+	i = 0;
+	while (i < (int)size)
+	{
+		if (a > b[i])
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+int	ft_target(int a, int *b, size_t size)
+{
+	int	result;
+	int	i;
+
+	i = 0;
+	if (!ft_is_b_lower_than_a(a, b, size))
+		return (ft_max(b, size));
+	while (i < (int)size && a < b[i])
+		i++;
+	result = i;
+	if (i < (int)size)
+		i++;
+	while (i < (int)size)
+	{
+		if (b[i] < a && b[i] > b[result])
+		result = i;
 		i++;
 	}
 	return (result);
@@ -69,6 +95,7 @@ int	*ft_find_targets(t_stacks *stacks)
 	targets = malloc(sizeof(int) * stacks->size_a);
 	if (!targets)
 		return (0);
+	ft_memset(targets, 0, sizeof(int) * stacks->size_a);
 	while (i < (int)stacks->size_a)
 	{
 		targets[i] = ft_target(stacks->a[i], stacks->b, stacks->size_b);
@@ -285,8 +312,6 @@ void	ft_pushsort_to_b(t_stacks *stacks)
 	ft_startpush(stacks);
 	while (stacks->size_a > 0)
 	{
-		if (stacks->b[0] < stacks->b[1])
-			SB
 		targets = ft_find_targets(stacks);
 		target = malloc(sizeof(int) * 3);
 		if (!target)
@@ -299,8 +324,6 @@ void	ft_pushsort_to_b(t_stacks *stacks)
 			ft_both_up(stacks, target);
 		if (target[2] == 3)
 			ft_both_down(stacks, target);
-		if (stacks->b[0] < stacks->b[1])
-			SB
 		free(targets);
 		free(target);
 	}

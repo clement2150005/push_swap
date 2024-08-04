@@ -6,7 +6,7 @@
 /*   By: ccolin <ccolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 09:35:56 by ccolin            #+#    #+#             */
-/*   Updated: 2024/08/02 12:34:11 by ccolin           ###   ########.fr       */
+/*   Updated: 2024/08/04 16:22:45 by ccolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 # include <stdlib.h>
 # include "libft.h"
 # include "ft_printf.h"
+
+# define ABSS(x) ((x) < 0 ? -(x) : (x))
 
 # define SA ft_sa(stacks);
 # define SB ft_sb(stacks);
@@ -39,13 +41,6 @@ typedef struct stacks
 	size_t	size_a;
 	size_t	size_b;
 }		t_stacks;
-
-typedef struct target
-{
-	int	b;
-	int	difference;
-}		t_target;
-
 
 void		print_stacks(t_stacks *stacks);
 
