@@ -6,7 +6,7 @@
 /*   By: ccolin <ccolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 11:23:52 by ccolin            #+#    #+#             */
-/*   Updated: 2024/08/04 16:43:45 by ccolin           ###   ########.fr       */
+/*   Updated: 2024/08/04 22:13:45 by ccolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,24 @@ int	ft_max(int *b, size_t size)
 	return (result);
 }
 
+int	ft_min(int *b, size_t size)
+{
+	int i;
+	int	min;
+	int	result;
+
+	i = 0;
+	min = b[i];
+	result = i;
+	while (++i < (int)size)
+		if (min < b[i])
+		{
+			min = b[i];
+			result = i;
+		}
+	return (result);
+}
+
 int	ft_is_b_lower_than_a(int a, int *b, size_t size)
 {
 	int	i;
@@ -38,6 +56,20 @@ int	ft_is_b_lower_than_a(int a, int *b, size_t size)
 	while (i < (int)size)
 	{
 		if (a > b[i])
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+int	ft_is_b_higher_than_a(int a, int *b, size_t size)
+{
+	int	i;
+
+	i = 0;
+	while (i < (int)size)
+	{
+		if (a < b[i])
 			return (1);
 		i++;
 	}
@@ -66,6 +98,28 @@ int	ft_target(int a, int *b, size_t size)
 	return (result);
 }
 
+int	ft_targetb(int a, int *b, size_t size)
+{
+	int	result;
+	int	i;
+
+	i = 0;
+	if (!ft_is_b_higher_than_a(a, b, size))
+		return (ft_min(b, size));
+	while (i < (int)size && a > b[i])
+		i++;
+	result = i;
+	if (i < (int)size)
+		i++;
+	while (i < (int)size)
+	{
+		if (b[i] > a && b[i] < b[result])
+		result = i;
+		i++;
+	}
+	return (result);
+}
+
 // void	ft_push_target(int *target, t_stacks *stacks);
 // {
 	
@@ -86,19 +140,39 @@ void	print_array(int *array, size_t size)
 	printf("\n");
 }
 
-int	*ft_find_targets(t_stacks *stacks)
+int	*ft_find_targets(int *a, int *b, size_t size_a, size_t size_b)
 {
 	int	*targets;
 	int	i;
 
 	i = 0;
-	targets = malloc(sizeof(int) * stacks->size_a);
+	targets = malloc(sizeof(int) * size_a);
 	if (!targets)
 		return (0);
-	ft_memset(targets, 0, sizeof(int) * stacks->size_a);
-	while (i < (int)stacks->size_a)
+	ft_memset(targets, 0, sizeof(int) * size_a);
+	while (i < (int)size_a)
 	{
-		targets[i] = ft_target(stacks->a[i], stacks->b, stacks->size_b);
+		targets[i] = ft_target(a[i], b, size_b);
+		i++;
+	}
+	// printf("targets\n");
+	// print_array(targets,  stacks->size_a);
+	return (targets);
+}
+
+int	*ft_find_targetsb(int *a, int *b, size_t size_a, size_t size_b)
+{
+	int	*targets;
+	int	i;
+
+	i = 0;
+	targets = malloc(sizeof(int) * size_a);
+	if (!targets)
+		return (0);
+	ft_memset(targets, 0, sizeof(int) * size_a);
+	while (i < (int)size_a)
+	{
+		targets[i] = ft_targetb(a[i], b, size_b);
 		i++;
 	}
 	// printf("targets\n");
@@ -132,25 +206,25 @@ int	ft_cost_both_up(int a, int b)
 	return (cost);
 }
 
-int	ft_cost_both_down(int a, int b, t_stacks *stacks)
+int	ft_cost_both_down(int a, int b, size_t size_a, size_t size_b)
 {
 	int	cost;
 
 	cost = 0;
-	while (a < (int)stacks->size_a + 1 && b < (int)stacks->size_b + 1)
+	while (a < (int)size_a + 1 && b < (int)size_b + 1)
 	{
 		a++;
 		b++;
 		cost++;
 	}
-	if (a != (int)stacks->size_a + 1)
-		while (a != (int)stacks->size_a + 1)
+	if (a != (int)size_a + 1)
+		while (a != (int)size_a + 1)
 		{
 			a++;
 			cost++;
 		}
-	if (b != (int)stacks->size_b + 1)
-		while (b != (int)stacks->size_b + 1)
+	if (b != (int)size_b + 1)
+		while (b != (int)size_b + 1)
 		{
 			b++;
 			cost++;
@@ -158,30 +232,30 @@ int	ft_cost_both_down(int a, int b, t_stacks *stacks)
 	return (cost);
 }
 
-int	ft_cost_up_down(int a, int b, t_stacks *stacks)
+int	ft_cost_up_down(int a, int b, size_t size_a, size_t size_b)
 {
 	int	cost;
 
 	cost = 0;
-	if (a > ((int)stacks->size_a / 2))
-		while (a < (int)stacks->size_a + 1)
+	if (a > ((int)size_a / 2))
+		while (a < (int)size_a + 1)
 		{
 			a++;
 			cost++;
 		}
-	if (a <= ((int)stacks->size_a / 2))
+	if (a <= ((int)size_a / 2))
 		while (a > 0)
 		{
 			a--;
 			cost++;
 		}
-	if (b > ((int)stacks->size_b / 2))
-		while (b < (int)stacks->size_b + 1)
+	if (b > ((int)size_b / 2))
+		while (b < (int)size_b + 1)
 		{
 			b++;
 			cost++;
 		}
-	if (b <= ((int)stacks->size_b / 2))
+	if (b <= ((int)size_b / 2))
 		while (b > 0)
 		{
 			b--;
@@ -213,24 +287,24 @@ int	ft_newcost3(int new_cost, int *target, int i, int *targets)
 	return (new_cost);
 }
 
-int	*ft_push_cost(int *targets, t_stacks *stacks, int *target)
+int	*ft_push_cost(int *targets, size_t size_a, size_t size_b, int *target)
 {
 	int	cost;
 	int	new_cost;
 	int	i;
 
 	i = 0;
-	cost = ft_cost_up_down(i, targets[i], stacks);
+	cost = ft_cost_up_down(i, targets[i], size_a, size_b);
 	cost = ft_newcost1(cost, target, i, targets);
-	while (i++ < (int)stacks->size_a - 1)
+	while (i++ < (int)size_a - 1)
 	{
-		new_cost = ft_cost_up_down(i, targets[i], stacks);
+		new_cost = ft_cost_up_down(i, targets[i], size_a, size_b);
 		if (new_cost < cost)
 			cost = ft_newcost1(new_cost, target, i, targets);
 		new_cost = ft_cost_both_up(i, targets[i]);
 		if (new_cost < cost)
 			cost = ft_newcost2(new_cost, target, i, targets);
-		new_cost = ft_cost_both_down(i, targets[i], stacks);
+		new_cost = ft_cost_both_down(i, targets[i], size_a, size_b);
 		if (new_cost < cost)
 			cost = ft_newcost3(new_cost, target, i, targets);
 	}
@@ -293,6 +367,62 @@ void	ft_both_down(t_stacks *stacks, int *target)
 	PB
 }
 
+void	ft_up_downb(t_stacks *stacks, int *target)
+{
+	int goal_a;
+	int	goal_b;
+
+	goal_a = stacks->b[target[0]];
+	goal_b = stacks->a[target[1]];
+	while (goal_a != stacks->b[0])
+	{
+		if (target[0] > (int)stacks->size_b / 2)
+			RRB
+		if (target[0] <= (int)stacks->size_b / 2)
+			RB
+	}
+		while (goal_b != stacks->a[0])
+	{
+		if (target[1] > (int)stacks->size_b / 2)
+			RRA
+		if (target[1] <= (int)stacks->size_b / 2)
+			RA
+	}
+	PA
+}
+
+void	ft_both_upb(t_stacks *stacks, int *target)
+{
+	int goal_a;
+	int	goal_b;
+
+	goal_a = stacks->b[target[0]];
+	goal_b = stacks->a[target[1]];
+	while (goal_a != stacks->a[0] && goal_b != stacks->b[0])
+		RR
+	while (goal_a != stacks->b[0])
+		RB
+	while (goal_b != stacks->a[0])
+		RA
+	PA
+}
+
+void	ft_both_downb(t_stacks *stacks, int *target)
+{
+	int goal_a;
+	int	goal_b;
+
+	goal_a = stacks->b[target[0]];
+	goal_b = stacks->a[target[1]];
+	while (goal_a != stacks->b[0] && goal_b != stacks->a[0])
+		RRR
+	while (goal_a != stacks->b[0])
+		RRB
+	while (goal_b != stacks->a[0])
+		RRA
+	PA
+}
+
 void	ft_startpush(t_stacks *stacks)
 {
 	if (stacks->size_a == 4)
@@ -310,14 +440,14 @@ void	ft_pushsort_to_b(t_stacks *stacks)
 	int	*targets;
 
 	ft_startpush(stacks);
-	while (stacks->size_a > 0)
+	while (stacks->size_a > 3)
 	{
-		targets = ft_find_targets(stacks);
+		targets = ft_find_targets(stacks->a, stacks->b, stacks->size_a, stacks->size_b);
 		target = malloc(sizeof(int) * 3);
 		if (!target)
 			return ;
 		ft_memset(target, 0, sizeof(int) * 3);
-		target = ft_push_cost(targets, stacks, target);
+		target = ft_push_cost(targets, stacks->size_a, stacks->size_b, target);
 		if (target[2] == 1)
 			ft_up_down(stacks, target);
 		if (target[2] == 2)
@@ -329,12 +459,31 @@ void	ft_pushsort_to_b(t_stacks *stacks)
 	}
 }
 
-// void	ft_pushsort_to_a(t_stacks *stacks)
-// {
+void	ft_pushsort_to_a(t_stacks *stacks)
+{
+	int	*target;
+	int	*targets;
 
-// }
+	while (stacks->size_b > 0)
+	{
+		targets = ft_find_targetsb(stacks->b, stacks->a, stacks->size_b, stacks->size_a);
+		target = malloc(sizeof(int) * 3);
+		if (!target)
+			return ;
+		ft_memset(target, 0, sizeof(int) * 3);
+		target = ft_push_cost(targets, stacks->size_b, stacks->size_a, target);
+		if (target[2] == 1)
+			ft_up_downb(stacks, target);
+		if (target[2] == 2)
+			ft_both_upb(stacks, target);
+		if (target[2] == 3)
+			ft_both_downb(stacks, target);
+		free(targets);
+		free(target);
+	}
+}
 
-void	ft_simple_sort(t_stacks *stacks)
+void	ft_simple_sort_a(t_stacks *stacks)
 {
 	if (stacks->a[0] < stacks->a[1] && stacks->a[1] < stacks->a[2])
 		return ;
@@ -385,11 +534,11 @@ void	ft_push_swap(t_stacks *stacks)
 	}
 	if (stacks->size_a == 3)
 	{
-		ft_simple_sort(stacks);
+		ft_simple_sort_a(stacks);
 		return ;
 	}
 	ft_pushsort_to_b(stacks);
-	while (stacks->size_b > 0)
-		PA
+	ft_simple_sort_a(stacks);
+	ft_pushsort_to_a(stacks);
 	ft_rotate_to_completion(stacks);
 }
