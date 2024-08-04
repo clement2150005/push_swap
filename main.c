@@ -6,7 +6,7 @@
 /*   By: ccolin <ccolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 11:23:52 by ccolin            #+#    #+#             */
-/*   Updated: 2024/08/02 16:16:58 by ccolin           ###   ########.fr       */
+/*   Updated: 2024/08/04 11:30:01 by ccolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	main(int argc, char **argv)
 		return (1);
 	ft_ps_initialize(argc, argv, &stacks);
 	ft_push_swap(&stacks);
-	print_stacks(&stacks);
+	// print_stacks(&stacks);
 	ft_free_stacks(&stacks);
 	return (0);
 }

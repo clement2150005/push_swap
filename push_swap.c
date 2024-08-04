@@ -6,7 +6,7 @@
 /*   By: ccolin <ccolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 11:23:52 by ccolin            #+#    #+#             */
-/*   Updated: 2024/08/03 17:10:36 by ccolin           ###   ########.fr       */
+/*   Updated: 2024/08/04 12:59:23 by ccolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,8 @@ int	*ft_find_targets(t_stacks *stacks)
 		targets[i] = ft_target(stacks->a[i], stacks->b, stacks->size_b);
 		i++;
 	}
-	printf("targets\n");
-	print_array(targets,  stacks->size_a);
+	// printf("targets\n");
+	// print_array(targets,  stacks->size_a);
 	return (targets);
 }
 
@@ -212,17 +212,69 @@ int	*ft_push_cost(int *targets, t_stacks *stacks, int *target)
 
 void	ft_up_down(t_stacks *stacks, int *target)
 {
+	int goal_a;
+	int	goal_b;
 
+	goal_a = stacks->a[target[0]];
+	goal_b = stacks->b[target[1]];
+	while (goal_a != stacks->a[0])
+	{
+		if (target[0] > (int)stacks->size_a / 2)
+			RRA
+		if (target[0] <= (int)stacks->size_a / 2)
+			RA
+	}
+		while (goal_b != stacks->b[0])
+	{
+		if (target[1] > (int)stacks->size_b / 2)
+			RRB
+		if (target[1] <= (int)stacks->size_b / 2)
+			RB
+	}
+	PB
 }
 
 void	ft_both_up(t_stacks *stacks, int *target)
 {
-	
+	int goal_a;
+	int	goal_b;
+
+	goal_a = stacks->a[target[0]];
+	goal_b = stacks->b[target[1]];
+	while (goal_a != stacks->a[0] && goal_b != stacks->b[0])
+		RR
+	while (goal_a != stacks->a[0])
+		RA
+	while (goal_b != stacks->b[0])
+		RB
+	PB
 }
 
 void	ft_both_down(t_stacks *stacks, int *target)
 {
-	
+	int goal_a;
+	int	goal_b;
+
+	goal_a = stacks->a[target[0]];
+	goal_b = stacks->b[target[1]];
+	while (goal_a != stacks->a[0] && goal_b != stacks->b[0])
+		RRR
+	while (goal_a != stacks->a[0])
+		RRA
+	while (goal_b != stacks->b[0])
+		RRB
+	PB
+}
+
+void	ft_startpush(t_stacks *stacks)
+{
+	if (stacks->size_a == 4)
+		PB
+	else
+		{
+			PB
+			PB
+		}
 }
 
 void	ft_pushsort_to_b(t_stacks *stacks)
@@ -230,27 +282,28 @@ void	ft_pushsort_to_b(t_stacks *stacks)
 	int	*target;
 	int	*targets;
 
-	PB
-	PB
-	if (stacks->b[0] < stacks->b[1])
-		RB
-	targets = ft_find_targets(stacks);
-	target = malloc(sizeof(int) * 3);
-	ft_memset(target, 0, 3);
-	if (!target)
-		return ;
-	ft_memset(target, 0, sizeof(int) * 3);
-	printf("target\n");
-	target = ft_push_cost(targets, stacks, target);
-	print_array(target, 3);
-	if (target[2] == 1)
-		ft_up_down(stacks, target);
-	if (target[2] == 2)
-		ft_both_up(stacks, target);
-	if (target[2] == 3)
-		ft_both_down(stacks, target);
-	free(targets);
-	free(target);
+	ft_startpush(stacks);
+	while (stacks->size_a > 0)
+	{
+		if (stacks->b[0] < stacks->b[1])
+			SB
+		targets = ft_find_targets(stacks);
+		target = malloc(sizeof(int) * 3);
+		if (!target)
+			return ;
+		ft_memset(target, 0, sizeof(int) * 3);
+		target = ft_push_cost(targets, stacks, target);
+		if (target[2] == 1)
+			ft_up_down(stacks, target);
+		if (target[2] == 2)
+			ft_both_up(stacks, target);
+		if (target[2] == 3)
+			ft_both_down(stacks, target);
+		if (stacks->b[0] < stacks->b[1])
+			SB
+		free(targets);
+		free(target);
+	}
 }
 
 // void	ft_pushsort_to_a(t_stacks *stacks)
@@ -290,12 +343,10 @@ void	ft_rotate_to_completion(t_stacks *stacks)
 		min_position++;
 	while (stacks->a[0] != stacks->min)
 	{
-		if (min_position < (int)stacks->size_a / 2)
+		if (min_position <= (int)stacks->size_a / 2)
 			RA
 		if (min_position > (int)stacks->size_a / 2)
 			RRA
-		else
-			RA
 	}
 }
 
@@ -309,10 +360,13 @@ void	ft_push_swap(t_stacks *stacks)
 			RA
 		return ;
 	}
-	// while (stacks-> size_a > 3)
+	if (stacks->size_a == 3)
+	{
+		ft_simple_sort(stacks);
+		return ;
+	}
 	ft_pushsort_to_b(stacks);
-	// ft_simple_sort(stacks);
-	// while (stacks->size_b > 0)
-	// 	ft_pushsort_to_a(&stacks);
-	// ft_rotate_to_completion(stacks);
+	while (stacks->size_b > 0)
+		PA
+	ft_rotate_to_completion(stacks);
 }
