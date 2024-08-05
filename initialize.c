@@ -6,7 +6,7 @@
 /*   By: ccolin <ccolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/27 08:42:33 by ccolin            #+#    #+#             */
-/*   Updated: 2024/08/05 17:47:27 by ccolin           ###   ########.fr       */
+/*   Updated: 2024/08/05 18:55:37 by ccolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,44 +38,44 @@ char	**ft_set_array(int argc, char **argv)
 	return (array);
 }
 
-void	ft_set_min(t_stacks *stacks)
+void	ft_set_min(t_stck *stck)
 {
 	int	i;
 
 	i = 0;
-	stacks->min = stacks->a[i];
-	while ((size_t)i < stacks->size_a)
+	stck->min = stck->a[i];
+	while ((size_t)i < stck->sze_a)
 	{
-		if (stacks->a[i] < stacks->min)
-			stacks->min = stacks->a[i];
+		if (stck->a[i] < stck->min)
+			stck->min = stck->a[i];
 		i++;
 	}
 }
 
-void	ft_ps_initialize(int argc, char **argv, t_stacks *stacks)
+void	ft_ps_initialize(int argc, char **argv, t_stck *stck)
 {
 	int		i;
-	int		arrsize;
+	int		arrsze;
 	char	**array;
 
-	arrsize = 0;
+	arrsze = 0;
 	array = ft_set_array(argc, argv);
-	while (array[arrsize])
-		arrsize++;
-	stacks->a = ft_calloc(arrsize + 1, sizeof(int));
-	if (stacks->a == NULL)
+	while (array[arrsze])
+		arrsze++;
+	stck->a = ft_calloc(arrsze + 1, sizeof(int));
+	if (stck->a == NULL)
 		return ;
-	stacks->b = ft_calloc(arrsize + 1, sizeof(int));
-	if (stacks->b == NULL)
+	stck->b = ft_calloc(arrsze + 1, sizeof(int));
+	if (stck->b == NULL)
 		return ;
 	i = 0;
-	while (i < arrsize)
+	while (i < arrsze)
 	{
-		stacks->a[i] = (int)ft_char_to_long(array[i]);
+		stck->a[i] = (int)ft_char_to_long(array[i]);
 		i++;
 	}
 	ft_freedoublearray(array);
-	stacks->size_a = arrsize;
-	stacks->size_b = 0;
-	ft_set_min(stacks);
+	stck->sze_a = arrsze;
+	stck->sze_b = 0;
+	ft_set_min(stck);
 }

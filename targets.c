@@ -1,91 +1,91 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   targets.c                                          :+:      :+:    :+:   */
+/*   trgts.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccolin <ccolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/05 17:33:58 by ccolin            #+#    #+#             */
-/*   Updated: 2024/08/05 17:47:18 by ccolin           ###   ########.fr       */
+/*   Updated: 2024/08/05 18:47:54 by ccolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_target(int a, int *b, size_t size)
+int	ft_trgt(int a, int *b, size_t sze)
 {
 	int	result;
 	int	i;
 
 	i = 0;
-	if (!ft_is_b_lower_than_a(a, b, size))
-		return (ft_max(b, size));
-	while (i < (int)size && a < b[i])
+	if (!ft_is_b_lower_than_a(a, b, sze))
+		return (ft_max(b, sze));
+	while (i < (int)sze && a < b[i])
 		i++;
 	result = i;
-	if (i < (int)size)
+	if (i < (int)sze)
 		i++;
-	while (i < (int)size)
+	while (i < (int)sze)
 	{
 		if (b[i] < a && b[i] > b[result])
-		result = i;
+			result = i;
 		i++;
 	}
 	return (result);
 }
 
-int	ft_targetb(int a, int *b, size_t size)
+int	ft_trgtb(int a, int *b, size_t sze)
 {
 	int	result;
 	int	i;
 
 	i = 0;
-	if (!ft_is_b_higher_than_a(a, b, size))
-		return (ft_min(b, size));
-	while (i < (int)size && a > b[i])
+	if (!ft_is_b_higher_than_a(a, b, sze))
+		return (ft_min(b, sze));
+	while (i < (int)sze && a > b[i])
 		i++;
 	result = i;
-	if (i < (int)size)
+	if (i < (int)sze)
 		i++;
-	while (i < (int)size)
+	while (i < (int)sze)
 	{
 		if (b[i] > a && b[i] < b[result])
-		result = i;
+			result = i;
 		i++;
 	}
 	return (result);
 }
 
-int	*ft_find_targetsb(int *a, int *b, size_t size_a, size_t size_b)
+int	*ft_find_trgtsb(int *a, int *b, size_t sze_a, size_t sze_b)
 {
-	int	*targets;
+	int	*trgts;
 	int	i;
 
 	i = 0;
-	targets = ft_calloc(size_a, sizeof(int));
-	if (!targets)
+	trgts = ft_calloc(sze_a, sizeof(int));
+	if (!trgts)
 		return (0);
-	while (i < (int)size_a)
+	while (i < (int)sze_a)
 	{
-		targets[i] = ft_targetb(a[i], b, size_b);
+		trgts[i] = ft_trgtb(a[i], b, sze_b);
 		i++;
 	}
-	return (targets);
+	return (trgts);
 }
 
-int	*ft_find_targets(int *a, int *b, size_t size_a, size_t size_b)
+int	*ft_find_trgts(int *a, int *b, size_t sze_a, size_t sze_b)
 {
-	int	*targets;
+	int	*trgts;
 	int	i;
 
 	i = 0;
-	targets = ft_calloc(size_a, sizeof(int));
-	if (!targets)
+	trgts = ft_calloc(sze_a, sizeof(int));
+	if (!trgts)
 		return (0);
-	while (i < (int)size_a)
+	while (i < (int)sze_a)
 	{
-		targets[i] = ft_target(a[i], b, size_b);
+		trgts[i] = ft_trgt(a[i], b, sze_b);
 		i++;
 	}
-	return (targets);
+	return (trgts);
 }

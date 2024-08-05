@@ -6,7 +6,7 @@
 /*   By: ccolin <ccolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 11:08:33 by ccolin            #+#    #+#             */
-/*   Updated: 2024/05/06 10:58:00 by ccolin           ###   ########.fr       */
+/*   Updated: 2024/08/05 18:55:11 by ccolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void			ft_lstadd_front(t_list **lst, t_list *new);
 void			ft_lstiter(t_list *lst, void (*f)(void *));
 void			ft_lstadd_back(t_list **lst, t_list *new);
 void			*ft_memset(void *b, int c, size_t len);
-void			*ft_calloc(size_t count, size_t size);
+void			*ft_calloc(size_t count, size_t sze);
 void			ft_putendl_fd(char *s, int fd);
 void			ft_putstr_fd(char *s, int fd);
 void			ft_putchar_fd(char c, int fd);
@@ -48,7 +48,7 @@ int				ft_memcmp(const void *s1, const void *s2, size_t n);
 int				ft_strncmp(const char *s1, const char *s2, size_t n);
 int				ft_strlen(const char *str);
 int				ft_atoi(const char *str);
-int				ft_lstsize(t_list *lst);
+int				ft_lstsze(t_list *lst);
 int				ft_tolower(int c);
 int				ft_toupper(int c);
 int				ft_isalnum(int c);
@@ -69,7 +69,7 @@ char			*ft_strchr(const char *s, int c);
 char			*ft_strdup(const char *s1);
 char			*ft_itoa(int n);
 
-unsigned int	ft_strlcat(char *dst, const char *src, unsigned int dstsize);
-unsigned int	ft_strlcpy(char *dst, const char *src, size_t dstsize);
+unsigned int	ft_strlcat(char *dst, const char *src, unsigned int dstsze);
+unsigned int	ft_strlcpy(char *dst, const char *src, size_t dstsze);
 
 #endif

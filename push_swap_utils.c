@@ -6,91 +6,91 @@
 /*   By: ccolin <ccolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/27 12:53:36 by ccolin            #+#    #+#             */
-/*   Updated: 2024/08/05 17:47:31 by ccolin           ###   ########.fr       */
+/*   Updated: 2024/08/05 18:54:42 by ccolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_both_down(t_stacks *stacks, int *target)
+void	ft_both_down(t_stck *stck, int *trgt)
 {
-	int goal_a;
+	int	goal_a;
 	int	goal_b;
 
-	goal_a = stacks->a[target[0]];
-	goal_b = stacks->b[target[1]];
-	while (goal_a != stacks->a[0] && goal_b != stacks->b[0])
-		RRR
-	while (goal_a != stacks->a[0])
-		RRA
-	while (goal_b != stacks->b[0])
-		RRB
-	PB
+	goal_a = stck->a[trgt[0]];
+	goal_b = stck->b[trgt[1]];
+	while (goal_a != stck->a[0] && goal_b != stck->b[0])
+		ft_rrr(stck);
+	while (goal_a != stck->a[0])
+		ft_rra(stck);
+	while (goal_b != stck->b[0])
+		ft_rrb(stck);
+	ft_pb(stck);
 }
 
-void	ft_up_downb(t_stacks *stacks, int *target)
+void	ft_up_downb(t_stck *stck, int *trgt)
 {
-	int goal_a;
+	int	goal_a;
 	int	goal_b;
 
-	goal_a = stacks->a[target[1]];
-	goal_b = stacks->b[target[0]];
-	while (goal_a != stacks->a[0])
+	goal_a = stck->a[trgt[1]];
+	goal_b = stck->b[trgt[0]];
+	while (goal_a != stck->a[0])
 	{
-		if (target[1] > (int)stacks->size_a / 2)
-			RRA
-		if (target[1] <= (int)stacks->size_a / 2)
-			RA
+		if (trgt[1] > (int)stck->sze_a / 2)
+			ft_rra(stck);
+		if (trgt[1] <= (int)stck->sze_a / 2)
+			ft_ra(stck);
 	}
-		while (goal_b != stacks->b[0])
+	while (goal_b != stck->b[0])
 	{
-		if (target[0] > (int)stacks->size_b / 2)
-			RRB
-		if (target[0] <= (int)stacks->size_b / 2)
-			RB
+		if (trgt[0] > (int)stck->sze_b / 2)
+			ft_rrb(stck);
+		if (trgt[0] <= (int)stck->sze_b / 2)
+			ft_rb(stck);
 	}
-	PA
+	ft_pa(stck);
 }
 
-void	ft_both_upb(t_stacks *stacks, int *target)
+void	ft_both_upb(t_stck *stck, int *trgt)
 {
-	int goal_a;
+	int	goal_a;
 	int	goal_b;
 
-	goal_a = stacks->a[target[1]];
-	goal_b = stacks->b[target[0]];
-	while (goal_a != stacks->a[0] && goal_b != stacks->b[0])
-		RR
-	while (goal_a != stacks->a[0])
-		RA
-	while (goal_b != stacks->b[0])
-		RB
-	PA
+	goal_a = stck->a[trgt[1]];
+	goal_b = stck->b[trgt[0]];
+	while (goal_a != stck->a[0] && goal_b != stck->b[0])
+		ft_rr(stck);
+	while (goal_a != stck->a[0])
+		ft_ra(stck);
+	while (goal_b != stck->b[0])
+		ft_rb(stck);
+	ft_pa(stck);
 }
 
-void	ft_both_downb(t_stacks *stacks, int *target)
+void	ft_both_downb(t_stck *stck, int *trgt)
 {
-	int goal_a;
+	int	goal_a;
 	int	goal_b;
 
-	goal_a = stacks->a[target[1]];
-	goal_b = stacks->b[target[0]];
-	while (goal_a != stacks->a[0] && goal_b != stacks->a[0])
-		RRR
-	while (goal_a != stacks->a[0])
-		RRA
-	while (goal_b != stacks->b[0])
-		RRB
-	PA
+	goal_a = stck->a[trgt[1]];
+	goal_b = stck->b[trgt[0]];
+	while (goal_a != stck->a[0] && goal_b != stck->a[0])
+		ft_rrr(stck);
+	while (goal_a != stck->a[0])
+		ft_rra(stck);
+	while (goal_b != stck->b[0])
+		ft_rrb(stck);
+	ft_pa(stck);
 }
 
-void	ft_startpush(t_stacks *stacks)
+void	ft_startpush(t_stck *stck)
 {
-	if (stacks->size_a == 4)
-		PB
+	if (stck->sze_a == 4)
+		ft_pb(stck);
 	else
-		{
-			PB
-			PB
-		}
+	{
+		ft_pb(stck);
+		ft_pb(stck);
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: ccolin <ccolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 10:45:06 by ccolin            #+#    #+#             */
-/*   Updated: 2024/05/21 11:35:47 by ccolin           ###   ########.fr       */
+/*   Updated: 2024/08/05 18:55:37 by ccolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,12 @@ char	*ft_gnl_strjoin(char const *s1, char const *s2)
 char	*ft_gnl_strdup(const char *s1)
 {
 	int		i;
-	int		size;
+	int		sze;
 	char	*ptr;
 
 	i = 0;
-	size = ft_gnl_strlen(s1);
-	ptr = malloc(sizeof(char) * size + 1);
+	sze = ft_gnl_strlen(s1);
+	ptr = malloc(sizeof(char) * sze + 1);
 	if (ptr == NULL)
 		return (NULL);
 	while (s1[i])

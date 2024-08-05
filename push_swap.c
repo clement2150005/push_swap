@@ -6,102 +6,102 @@
 /*   By: ccolin <ccolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 11:23:52 by ccolin            #+#    #+#             */
-/*   Updated: 2024/08/05 17:47:45 by ccolin           ###   ########.fr       */
+/*   Updated: 2024/08/05 18:55:37 by ccolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_pushsort_to_b(t_stacks *stacks)
+void	ft_pushsort_to_b(t_stck *stck)
 {
-	int	*target;
-	int	*targets;
+	int	*trgt;
+	int	*trgts;
 
-	ft_startpush(stacks);
-	while (stacks->size_a > 3)
+	ft_startpush(stck);
+	while (stck->sze_a > 3)
 	{
-		targets = ft_find_targets(stacks->a, stacks->b, stacks->size_a, stacks->size_b);
-		target = ft_calloc(3, sizeof(int));
-		if (!target)
+		trgts = ft_find_trgts(stck->a, stck->b, stck->sze_a, stck->sze_b);
+		trgt = ft_calloc(3, sizeof(int));
+		if (!trgt)
 			return ;
-		target = ft_push_cost(targets, stacks->size_a, stacks->size_b, target);
-		if (target[2] == 1)
-			ft_up_down(stacks, target);
-		if (target[2] == 2)
-			ft_both_up(stacks, target);
-		if (target[2] == 3)
-			ft_both_down(stacks, target);
-		free(targets);
-		free(target);
+		trgt = ft_push_cost(trgts, stck->sze_a, stck->sze_b, trgt);
+		if (trgt[2] == 1)
+			ft_up_down(stck, trgt);
+		if (trgt[2] == 2)
+			ft_both_up(stck, trgt);
+		if (trgt[2] == 3)
+			ft_both_down(stck, trgt);
+		free(trgts);
+		free(trgt);
 	}
 }
 
-void	ft_pushsort_to_a(t_stacks *stacks)
+void	ft_pushsort_to_a(t_stck *stck)
 {
-	int	*target;
-	int	*targets;
+	int	*trgt;
+	int	*trgts;
 
-	while (stacks->size_b > 0)
+	while (stck->sze_b > 0)
 	{
-		targets = ft_find_targetsb(stacks->b, stacks->a, stacks->size_b, stacks->size_a);
-		target = ft_calloc(3, sizeof(int));
-		if (!target)
+		trgts = ft_find_trgtsb(stck->b, stck->a, stck->sze_b, stck->sze_a);
+		trgt = ft_calloc(3, sizeof(int));
+		if (!trgt)
 			return ;
-		target = ft_push_cost(targets, stacks->size_b, stacks->size_a, target);
-		if (target[2] == 1)
-			ft_up_downb(stacks, target);
-		if (target[2] == 2)
-			ft_both_upb(stacks, target);
-		if (target[2] == 3)
-			ft_both_downb(stacks, target);
-		free(targets);
-		free(target);
+		trgt = ft_push_cost(trgts, stck->sze_b, stck->sze_a, trgt);
+		if (trgt[2] == 1)
+			ft_up_downb(stck, trgt);
+		if (trgt[2] == 2)
+			ft_both_upb(stck, trgt);
+		if (trgt[2] == 3)
+			ft_both_downb(stck, trgt);
+		free(trgts);
+		free(trgt);
 	}
 }
 
-void	ft_simple_sort_a(t_stacks *stacks)
+void	ft_simple_sort_a(t_stck *stck)
 {
-	if (stacks->a[0] > stacks->a[1] && stacks->a[0] > stacks->a[2])
-		RA
-	if (stacks->a[1] > stacks->a[0] && stacks->a[1] > stacks->a[2])
-		RRA
-	if (stacks->a[0] > stacks->a[1])
-		SA
+	if (stck->a[0] > stck->a[1] && stck->a[0] > stck->a[2])
+		ft_ra(stck);
+	if (stck->a[1] > stck->a[0] && stck->a[1] > stck->a[2])
+		ft_rra(stck);
+	if (stck->a[0] > stck->a[1])
+		ft_sa(stck);
 }
 
-void	ft_rotate_to_completion(t_stacks *stacks)
+void	ft_rotate_to_completion(t_stck *stck)
 {
 	int	min_position;
 
 	min_position = 0;
-	while (stacks->min != stacks->a[min_position])
+	while (stck->min != stck->a[min_position])
 		min_position++;
-	while (stacks->a[0] != stacks->min)
+	while (stck->a[0] != stck->min)
 	{
-		if (min_position <= (int)stacks->size_a / 2)
-			RA
-		if (min_position > (int)stacks->size_a / 2)
-			RRA
+		if (min_position <= (int)stck->sze_a / 2)
+			ft_ra(stck);
+		if (min_position > (int)stck->sze_a / 2)
+			ft_rra(stck);
 	}
 }
 
-void	ft_push_swap(t_stacks *stacks)
+void	ft_push_swap(t_stck *stck)
 {
-	if (stacks->size_a == 1)
+	if (stck->sze_a == 1)
 		return ;
-	if (stacks->size_a == 2)
+	if (stck->sze_a == 2)
 	{
-		if (stacks->a[0] > stacks->a[1])
-			RA
+		if (stck->a[0] > stck->a[1])
+			ft_ra(stck);
 		return ;
 	}
-	if (stacks->size_a == 3)
+	if (stck->sze_a == 3)
 	{
-		ft_simple_sort_a(stacks);
+		ft_simple_sort_a(stck);
 		return ;
 	}
-	ft_pushsort_to_b(stacks);
-	ft_simple_sort_a(stacks);
-	ft_pushsort_to_a(stacks);
-	ft_rotate_to_completion(stacks);
+	ft_pushsort_to_b(stck);
+	ft_simple_sort_a(stck);
+	ft_pushsort_to_a(stck);
+	ft_rotate_to_completion(stck);
 }

@@ -6,17 +6,17 @@
 /*   By: ccolin <ccolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 13:51:56 by ccolin            #+#    #+#             */
-/*   Updated: 2024/08/05 17:47:26 by ccolin           ###   ########.fr       */
+/*   Updated: 2024/08/05 18:59:23 by ccolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_swap(int *a, size_t size)
+int	ft_swap(int *a, size_t sze)
 {
 	int	temp;
 
-	if (size < 2)
+	if (sze < 2)
 		return (1);
 	temp = a[0];
 	a[0] = a[1];
@@ -24,7 +24,7 @@ int	ft_swap(int *a, size_t size)
 	return (0);
 }
 
-int	*ft_push_top_element(int *a, int *b, int size_b)
+int	*ft_push_top_element(int *a, int *b, int sze_b)
 {
 	int	*new_b;
 	int	i;
@@ -32,17 +32,17 @@ int	*ft_push_top_element(int *a, int *b, int size_b)
 
 	i = 0;
 	j = 1;
-	new_b = ft_calloc(size_b + 1, sizeof(int));
+	new_b = ft_calloc(sze_b + 1, sizeof(int));
 	if (!new_b)
 		return (NULL);
 	new_b[0] = a[0];
-	while (i < size_b)
+	while (i < sze_b)
 		new_b[j++] = b[i++];
 	free(b);
 	return (new_b);
 }
 
-int	*ft_remove_first_element(int *a, int size_a)
+int	*ft_remove_first_element(int *a, int sze_a)
 {
 	int	*new_a;
 	int	i;
@@ -50,18 +50,18 @@ int	*ft_remove_first_element(int *a, int size_a)
 
 	i = 0;
 	j = 1;
-	if (size_a <= 1)
+	if (sze_a <= 1)
 	{
 		free(a);
 		new_a = ft_calloc(0, sizeof(char));
 		if (!new_a)
 			return (NULL);
-		return new_a;
+		return (new_a);
 	}
-	new_a = ft_calloc(size_a - 1, sizeof(int));
+	new_a = ft_calloc(sze_a - 1, sizeof(int));
 	if (!new_a)
 		return (NULL);
-	while (j < size_a)
+	while (j < sze_a)
 		new_a[i++] = a[j++];
 	free(a);
 	return (new_a);

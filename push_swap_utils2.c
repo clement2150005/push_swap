@@ -6,48 +6,48 @@
 /*   By: ccolin <ccolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/27 12:53:36 by ccolin            #+#    #+#             */
-/*   Updated: 2024/08/05 17:47:29 by ccolin           ###   ########.fr       */
+/*   Updated: 2024/08/05 18:58:42 by ccolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_up_down(t_stacks *stacks, int *target)
+void	ft_up_down(t_stck *stck, int *trgt)
 {
-	int goal_a;
+	int	goal_a;
 	int	goal_b;
 
-	goal_a = stacks->a[target[0]];
-	goal_b = stacks->b[target[1]];
-	while (goal_a != stacks->a[0])
+	goal_a = stck->a[trgt[0]];
+	goal_b = stck->b[trgt[1]];
+	while (goal_a != stck->a[0])
 	{
-		if (target[0] > (int)stacks->size_a / 2)
-			RRA
-		if (target[0] <= (int)stacks->size_a / 2)
-			RA
+		if (trgt[0] > (int)stck->sze_a / 2)
+			ft_rra(stck);
+		if (trgt[0] <= (int)stck->sze_a / 2)
+			ft_ra(stck);
 	}
-		while (goal_b != stacks->b[0])
+	while (goal_b != stck->b[0])
 	{
-		if (target[1] > (int)stacks->size_b / 2)
-			RRB
-		if (target[1] <= (int)stacks->size_b / 2)
-			RB
+		if (trgt[1] > (int)stck->sze_b / 2)
+			ft_rrb(stck);
+		if (trgt[1] <= (int)stck->sze_b / 2)
+			ft_rb(stck);
 	}
-	PB
+	ft_pb(stck);
 }
 
-void	ft_both_up(t_stacks *stacks, int *target)
+void	ft_both_up(t_stck *stck, int *trgt)
 {
-	int goal_a;
+	int	goal_a;
 	int	goal_b;
 
-	goal_a = stacks->a[target[0]];
-	goal_b = stacks->b[target[1]];
-	while (goal_a != stacks->a[0] && goal_b != stacks->b[0])
-		RR
-	while (goal_a != stacks->a[0])
-		RA
-	while (goal_b != stacks->b[0])
-		RB
-	PB
+	goal_a = stck->a[trgt[0]];
+	goal_b = stck->b[trgt[1]];
+	while (goal_a != stck->a[0] && goal_b != stck->b[0])
+		ft_rr(stck);
+	while (goal_a != stck->a[0])
+		ft_ra(stck);
+	while (goal_b != stck->b[0])
+		ft_rb(stck);
+	ft_pb(stck);
 }

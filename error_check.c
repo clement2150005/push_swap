@@ -6,7 +6,7 @@
 /*   By: ccolin <ccolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/27 11:40:27 by ccolin            #+#    #+#             */
-/*   Updated: 2024/08/04 17:19:52 by ccolin           ###   ########.fr       */
+/*   Updated: 2024/08/05 18:53:06 by ccolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,10 +105,10 @@ int	ft_error_check(int argc, char **argv)
 	if (argc <= 1)
 		return (0);
 	if (argc == 2 && argv[1][0] == '\0')
-		{
-			ft_putstr_fd("Error\n", 2);
-			return (0);
-		}
+	{
+		ft_putstr_fd("Error\n", 2);
+		return (0);
+	}
 	array = ft_set_array(argc, argv);
 	if (!ft_isnumber(array) || !ft_islimits(array) || \
 	!ft_isduplicate(array))

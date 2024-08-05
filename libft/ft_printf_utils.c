@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_printf_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccolin <ccolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 13:40:38 by ccolin            #+#    #+#             */
-/*   Updated: 2024/06/11 13:51:35 by ccolin           ###   ########.fr       */
+/*   Updated: 2024/08/05 18:55:37 by ccolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_freeall(int **i, t_opts **opts)
 char	*ft_strdup_printf(const char *s1)
 {
 	int		i;
-	int		size;
+	int		sze;
 	char	*ptr;
 
 	if (!s1)
@@ -33,8 +33,8 @@ char	*ft_strdup_printf(const char *s1)
 		return (ptr);
 	}
 	i = 0;
-	size = ft_strlen(s1);
-	ptr = ft_calloc(size + 1, sizeof(char));
+	sze = ft_strlen(s1);
+	ptr = ft_calloc(sze + 1, sizeof(char));
 	if (ptr == NULL)
 		return (NULL);
 	while (s1[i])

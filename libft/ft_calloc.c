@@ -6,14 +6,14 @@
 /*   By: ccolin <ccolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 15:30:24 by ccolin            #+#    #+#             */
-/*   Updated: 2024/05/06 13:53:09 by ccolin           ###   ########.fr       */
+/*   Updated: 2024/08/05 18:55:11 by ccolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
 
-void	*ft_calloc(size_t count, size_t size)
+void	*ft_calloc(size_t count, size_t sze)
 {
 	size_t		i;
 	void		*ptr;
@@ -21,12 +21,12 @@ void	*ft_calloc(size_t count, size_t size)
 
 	if (count >= 2147483647)
 		return (NULL);
-	ptr = malloc(count * size);
+	ptr = malloc(count * sze);
 	if (ptr == NULL)
 		return (NULL);
 	ptr1 = (char *)ptr;
 	i = 0;
-	while (i < count * size)
+	while (i < count * sze)
 	{
 		ptr1[i] = 0;
 		i++;
@@ -48,33 +48,33 @@ void	*ft_calloc(size_t count, size_t size)
 //}
 
 //// Function to print memory content
-//void print_memory(const void *ptr, size_t count, size_t size) {
+//void print_memory(const void *ptr, size_t count, size_t sze) {
 //    const unsigned char *p = ptr;
-//    for (size_t i = 0; i < count * size; i++) {
+//    for (size_t i = 0; i < count * sze; i++) {
 //        printf("%02X ", p[i]);
-//        if ((i + 1) % size == 0) printf("| ");
+//        if ((i + 1) % sze == 0) printf("| ");
 //    }
 //    printf("\n");
 //}
 
 //int main() {
-//    size_t size = 4;
+//    size_t sze = 4;
 //    size_t count = 5;
 
 //    // Testing ft_calloc
 //    printf("\nTesting ft_calloc:\n");
-//    void *ft_ptr = ft_calloc(count, size);
+//    void *ft_ptr = ft_calloc(count, sze);
 //    if (ft_ptr == NULL) {
 //        printf("\033[0;31mft_calloc failed\033[0m\n");
 //        return 1;
 //    }
 //    printf("ft_calloc succeeded\n");
 //    printf("Memory content:\n");
-//    print_memory(ft_ptr, count, size);
+//    print_memory(ft_ptr, count, sze);
 
 //    // Testing calloc
 //    printf("\nTesting calloc:\n");
-//    void *calloc_ptr = calloc(count, size);
+//    void *calloc_ptr = calloc(count, sze);
 //    if (calloc_ptr == NULL) {
 //        printf("\033[0;31mcalloc failed\033[0m\n");
 //        free(ft_ptr); // Freeing ft_calloc allocated memory
@@ -82,11 +82,11 @@ void	*ft_calloc(size_t count, size_t size)
 //    }
 //    printf("calloc succeeded\n");
 //    printf("Memory content:\n");
-//    print_memory(calloc_ptr, count, size);
+//    print_memory(calloc_ptr, count, sze);
 
 //    // Comparing results
 //    printf("\nComparing results:\n");
-//    if (mem_cmp(ft_ptr, calloc_ptr, size * count)) {
+//    if (mem_cmp(ft_ptr, calloc_ptr, sze * count)) {
 //        printf("\033[0;32mResults match\033[0m\n");
 //    } else {
 //        printf("\033[0;31mResults don't match\033[0m\n");

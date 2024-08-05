@@ -6,7 +6,7 @@
 /*   By: ccolin <ccolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 16:22:55 by ccolin            #+#    #+#             */
-/*   Updated: 2024/05/11 12:26:27 by ccolin           ###   ########.fr       */
+/*   Updated: 2024/08/05 18:55:37 by ccolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 char	*ft_strdup(const char *s1)
 {
 	int		i;
-	int		size;
+	int		sze;
 	char	*ptr;
 
 	i = 0;
-	size = ft_strlen(s1);
-	ptr = malloc(sizeof(char) * size + 1);
+	sze = ft_strlen(s1);
+	ptr = malloc(sizeof(char) * sze + 1);
 	if (ptr == NULL)
 		return (NULL);
 	while (s1[i])
@@ -46,9 +46,9 @@ char	*ft_strdup(const char *s1)
 //}
 
 //// Function to print memory content
-//void print_memory(const void *ptr, size_t size) {
+//void print_memory(const void *ptr, size_t sze) {
 //    const unsigned char *p = ptr;
-//    for (size_t i = 0; i < size; i++) {
+//    for (size_t i = 0; i < sze; i++) {
 //        printf("%02X ", p[i]);
 //    }
 //    printf("\n");
