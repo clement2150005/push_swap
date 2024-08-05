@@ -6,7 +6,7 @@
 /*   By: ccolin <ccolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 11:23:52 by ccolin            #+#    #+#             */
-/*   Updated: 2024/08/05 12:10:47 by ccolin           ###   ########.fr       */
+/*   Updated: 2024/08/05 15:53:57 by ccolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -370,21 +370,21 @@ void	ft_up_downb(t_stacks *stacks, int *target)
 	int goal_a;
 	int	goal_b;
 
-	goal_a = stacks->b[target[0]];
-	goal_b = stacks->a[target[1]];
-	while (goal_a != stacks->b[0])
+	goal_a = stacks->a[target[1]];
+	goal_b = stacks->b[target[0]];
+	while (goal_a != stacks->a[0])
+	{
+		if (target[1] > (int)stacks->size_a / 2)
+			RRA
+		if (target[1] <= (int)stacks->size_a / 2)
+			RA
+	}
+		while (goal_b != stacks->b[0])
 	{
 		if (target[0] > (int)stacks->size_b / 2)
 			RRB
 		if (target[0] <= (int)stacks->size_b / 2)
 			RB
-	}
-		while (goal_b != stacks->a[0])
-	{
-		if (target[1] > (int)stacks->size_b / 2)
-			RRA
-		if (target[1] <= (int)stacks->size_b / 2)
-			RA
 	}
 	PA
 }
@@ -394,14 +394,14 @@ void	ft_both_upb(t_stacks *stacks, int *target)
 	int goal_a;
 	int	goal_b;
 
-	goal_a = stacks->b[target[0]];
-	goal_b = stacks->a[target[1]];
+	goal_a = stacks->a[target[1]];
+	goal_b = stacks->b[target[0]];
 	while (goal_a != stacks->a[0] && goal_b != stacks->b[0])
 		RR
-	while (goal_a != stacks->b[0])
-		RB
-	while (goal_b != stacks->a[0])
+	while (goal_a != stacks->a[0])
 		RA
+	while (goal_b != stacks->b[0])
+		RB
 	PA
 }
 
@@ -410,14 +410,14 @@ void	ft_both_downb(t_stacks *stacks, int *target)
 	int goal_a;
 	int	goal_b;
 
-	goal_a = stacks->b[target[0]];
-	goal_b = stacks->a[target[1]];
-	while (goal_a != stacks->b[0] && goal_b != stacks->a[0])
+	goal_a = stacks->a[target[1]];
+	goal_b = stacks->b[target[0]];
+	while (goal_a != stacks->a[0] && goal_b != stacks->a[0])
 		RRR
-	while (goal_a != stacks->b[0])
-		RRB
-	while (goal_b != stacks->a[0])
+	while (goal_a != stacks->a[0])
 		RRA
+	while (goal_b != stacks->b[0])
+		RRB
 	PA
 }
 

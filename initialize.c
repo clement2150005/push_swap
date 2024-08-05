@@ -6,7 +6,7 @@
 /*   By: ccolin <ccolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/27 08:42:33 by ccolin            #+#    #+#             */
-/*   Updated: 2024/08/05 11:58:34 by ccolin           ###   ########.fr       */
+/*   Updated: 2024/08/05 12:42:40 by ccolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,11 @@ void	ft_ps_initialize(int argc, char **argv, t_stacks *stacks)
 	array = ft_set_array(argc, argv);
 	while (array[arrsize])
 		arrsize++;
-	stacks->a = malloc(sizeof(int) * (arrsize + 1));
-	stacks->b = malloc(sizeof(int) * (arrsize + 1));
-	if (!stacks->a || !stacks->b)
+	stacks->a = ft_calloc(arrsize + 1, sizeof(int));
+	if (stacks->a == NULL)
+		return ;
+	stacks->b = ft_calloc(arrsize + 1, sizeof(int));
+	if (stacks->b == NULL)
 		return ;
 	i = 0;
 	while (i < arrsize)

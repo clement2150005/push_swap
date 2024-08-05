@@ -6,7 +6,7 @@
 /*   By: ccolin <ccolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 11:23:52 by ccolin            #+#    #+#             */
-/*   Updated: 2024/08/04 11:30:01 by ccolin           ###   ########.fr       */
+/*   Updated: 2024/08/05 16:16:22 by ccolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ int	main(int argc, char **argv)
 	if (!ft_error_check(argc, argv))
 		return (1);
 	ft_ps_initialize(argc, argv, &stacks);
-	ft_push_swap(&stacks);
+	if (!ft_is_sorted(stacks.a, stacks.size_a))
+		ft_push_swap(&stacks);
 	// print_stacks(&stacks);
 	ft_free_stacks(&stacks);
 	return (0);
