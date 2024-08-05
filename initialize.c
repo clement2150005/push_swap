@@ -6,7 +6,7 @@
 /*   By: ccolin <ccolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/27 08:42:33 by ccolin            #+#    #+#             */
-/*   Updated: 2024/08/03 11:17:01 by ccolin           ###   ########.fr       */
+/*   Updated: 2024/08/05 11:58:34 by ccolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@ char	**ft_set_array(int argc, char **argv)
 		array = ft_split(argv[1], ' ');
 	else
 	{
-		array = malloc(sizeof(char *) * argc);
+		array = ft_calloc(argc, sizeof(char *));
 		if (!array)
 			return (NULL);
 		while (i < argc - 1)
 		{
-			array[i] = malloc(sizeof(char) * (ft_strlen(argv[i + 1]) + 1));
+			array[i] = ft_calloc(ft_strlen(argv[i + 1]) + 1, sizeof(char));
 			if (!array[i])
 				return (NULL);
 			ft_strlcpy(array[i], argv[i + 1], ft_strlen(argv[i + 1]) + 1);

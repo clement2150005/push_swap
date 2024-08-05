@@ -6,7 +6,7 @@
 /*   By: ccolin <ccolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 13:51:56 by ccolin            #+#    #+#             */
-/*   Updated: 2024/08/03 11:24:20 by ccolin           ###   ########.fr       */
+/*   Updated: 2024/08/05 12:12:33 by ccolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	*ft_push_top_element(int *a, int *b, int size_b)
 
 	i = 0;
 	j = 1;
-	new_b = malloc(sizeof(int) * (size_b + 1));
+	new_b = ft_calloc(size_b + 1, sizeof(int));
 	if (!new_b)
 		return (NULL);
 	new_b[0] = a[0];
@@ -53,10 +53,12 @@ int	*ft_remove_first_element(int *a, int size_a)
 	if (size_a <= 1)
 	{
 		free(a);
-		new_a = malloc(0);
+		new_a = ft_calloc(0, sizeof(char));
+		if (!new_a)
+			return (NULL);
 		return new_a;
 	}
-	new_a = malloc(sizeof(int) * (size_a - 1));
+	new_a = ft_calloc(size_a - 1, sizeof(int));
 	if (!new_a)
 		return (NULL);
 	while (j < size_a)

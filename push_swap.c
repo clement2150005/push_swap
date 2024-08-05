@@ -6,7 +6,7 @@
 /*   By: ccolin <ccolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 11:23:52 by ccolin            #+#    #+#             */
-/*   Updated: 2024/08/04 22:13:45 by ccolin           ###   ########.fr       */
+/*   Updated: 2024/08/05 12:10:47 by ccolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	ft_min(int *b, size_t size)
 	min = b[i];
 	result = i;
 	while (++i < (int)size)
-		if (min < b[i])
+		if (min > b[i])
 		{
 			min = b[i];
 			result = i;
@@ -146,10 +146,9 @@ int	*ft_find_targets(int *a, int *b, size_t size_a, size_t size_b)
 	int	i;
 
 	i = 0;
-	targets = malloc(sizeof(int) * size_a);
+	targets = ft_calloc(size_a, sizeof(int));
 	if (!targets)
 		return (0);
-	ft_memset(targets, 0, sizeof(int) * size_a);
 	while (i < (int)size_a)
 	{
 		targets[i] = ft_target(a[i], b, size_b);
@@ -166,10 +165,9 @@ int	*ft_find_targetsb(int *a, int *b, size_t size_a, size_t size_b)
 	int	i;
 
 	i = 0;
-	targets = malloc(sizeof(int) * size_a);
+	targets = ft_calloc(size_a, sizeof(int));
 	if (!targets)
 		return (0);
-	ft_memset(targets, 0, sizeof(int) * size_a);
 	while (i < (int)size_a)
 	{
 		targets[i] = ft_targetb(a[i], b, size_b);
@@ -443,10 +441,9 @@ void	ft_pushsort_to_b(t_stacks *stacks)
 	while (stacks->size_a > 3)
 	{
 		targets = ft_find_targets(stacks->a, stacks->b, stacks->size_a, stacks->size_b);
-		target = malloc(sizeof(int) * 3);
+		target = ft_calloc(3, sizeof(int));
 		if (!target)
 			return ;
-		ft_memset(target, 0, sizeof(int) * 3);
 		target = ft_push_cost(targets, stacks->size_a, stacks->size_b, target);
 		if (target[2] == 1)
 			ft_up_down(stacks, target);
@@ -467,10 +464,9 @@ void	ft_pushsort_to_a(t_stacks *stacks)
 	while (stacks->size_b > 0)
 	{
 		targets = ft_find_targetsb(stacks->b, stacks->a, stacks->size_b, stacks->size_a);
-		target = malloc(sizeof(int) * 3);
+		target = ft_calloc(3, sizeof(int));
 		if (!target)
 			return ;
-		ft_memset(target, 0, sizeof(int) * 3);
 		target = ft_push_cost(targets, stacks->size_b, stacks->size_a, target);
 		if (target[2] == 1)
 			ft_up_downb(stacks, target);
@@ -485,25 +481,12 @@ void	ft_pushsort_to_a(t_stacks *stacks)
 
 void	ft_simple_sort_a(t_stacks *stacks)
 {
-	if (stacks->a[0] < stacks->a[1] && stacks->a[1] < stacks->a[2])
-		return ;
-	if (stacks->a[0] < stacks->a[1] && stacks->a[1] > stacks->a[2])
-	{
-		RRA
-		SA
-	}
 	if (stacks->a[0] > stacks->a[1] && stacks->a[0] > stacks->a[2])
 		RA
-	if (stacks->a[0] > stacks->a[1] && stacks->a[1] > stacks->a[2])
-	{
-		SA
+	if (stacks->a[1] > stacks->a[0] && stacks->a[1] > stacks->a[2])
 		RRA
-	}
-	if (stacks->a[0] > stacks->a[1] && stacks->a[1] < stacks->a[2])
+	if (stacks->a[0] > stacks->a[1])
 		SA
-	if ((stacks->a[0] < stacks->a[1] && stacks->a[1] > stacks->a[2])\
-	 && stacks->size_a > 2)
-		RRA
 }
 
 void	ft_rotate_to_completion(t_stacks *stacks)
