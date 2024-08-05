@@ -6,54 +6,91 @@
 /*   By: ccolin <ccolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/27 12:53:36 by ccolin            #+#    #+#             */
-/*   Updated: 2024/08/05 16:07:43 by ccolin           ###   ########.fr       */
+/*   Updated: 2024/08/05 17:47:31 by ccolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_freedoublearray(char **array)
+void	ft_both_down(t_stacks *stacks, int *target)
 {
-	int	i;
+	int goal_a;
+	int	goal_b;
 
-	i = 0;
-	while (array[i])
-		free(array[i++]);
-	free(array);
+	goal_a = stacks->a[target[0]];
+	goal_b = stacks->b[target[1]];
+	while (goal_a != stacks->a[0] && goal_b != stacks->b[0])
+		RRR
+	while (goal_a != stacks->a[0])
+		RRA
+	while (goal_b != stacks->b[0])
+		RRB
+	PB
 }
 
-void	ft_free_stacks(t_stacks *stacks)
+void	ft_up_downb(t_stacks *stacks, int *target)
 {
-	free(stacks->a);
-	free(stacks->b);
-	return ;
-}
+	int goal_a;
+	int	goal_b;
 
-int	ft_is_sorted(int *array, int size)
-{
-	if (size <= 1)
-		return (1);
-	
-	for (int i = 0; i < size - 1; i++)
+	goal_a = stacks->a[target[1]];
+	goal_b = stacks->b[target[0]];
+	while (goal_a != stacks->a[0])
 	{
-		if (array[i] > array[i + 1])
-			return (0);
+		if (target[1] > (int)stacks->size_a / 2)
+			RRA
+		if (target[1] <= (int)stacks->size_a / 2)
+			RA
 	}
-	return (1);
+		while (goal_b != stacks->b[0])
+	{
+		if (target[0] > (int)stacks->size_b / 2)
+			RRB
+		if (target[0] <= (int)stacks->size_b / 2)
+			RB
+	}
+	PA
 }
 
-// int	ft_is_empty(int *array)
-// {
-// 	if (!array[0])
-// 		return (1);
-// 	return (0);
-// }
+void	ft_both_upb(t_stacks *stacks, int *target)
+{
+	int goal_a;
+	int	goal_b;
 
-// int	ft_is_finished(t_stacks *stacks)
-// {
-// 	if (!ft_is_sorted(stacks->a, stacks->size_a))
-// 		return (0);
-// 	if (!ft_is_empty(stacks->b))
-// 		return (0);
-// 	return (1);
-// }
+	goal_a = stacks->a[target[1]];
+	goal_b = stacks->b[target[0]];
+	while (goal_a != stacks->a[0] && goal_b != stacks->b[0])
+		RR
+	while (goal_a != stacks->a[0])
+		RA
+	while (goal_b != stacks->b[0])
+		RB
+	PA
+}
+
+void	ft_both_downb(t_stacks *stacks, int *target)
+{
+	int goal_a;
+	int	goal_b;
+
+	goal_a = stacks->a[target[1]];
+	goal_b = stacks->b[target[0]];
+	while (goal_a != stacks->a[0] && goal_b != stacks->a[0])
+		RRR
+	while (goal_a != stacks->a[0])
+		RRA
+	while (goal_b != stacks->b[0])
+		RRB
+	PA
+}
+
+void	ft_startpush(t_stacks *stacks)
+{
+	if (stacks->size_a == 4)
+		PB
+	else
+		{
+			PB
+			PB
+		}
+}

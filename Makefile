@@ -33,5 +33,5 @@ norm:
 	norminette -R CheckForbiddenSourceHeader ${SRCS}
 	norminette -R CheckDefine *.h
 
-.PHONY: all re clean fclean norm bonus leaks gdb
+.PHONY: all re clean fclean norm bonus gdb
 

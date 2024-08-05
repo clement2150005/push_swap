@@ -6,7 +6,7 @@
 /*   By: ccolin <ccolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/27 08:42:33 by ccolin            #+#    #+#             */
-/*   Updated: 2024/08/05 12:42:40 by ccolin           ###   ########.fr       */
+/*   Updated: 2024/08/05 17:47:27 by ccolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,19 +38,16 @@ char	**ft_set_array(int argc, char **argv)
 	return (array);
 }
 
-void	ft_set_min_max(t_stacks *stacks)
+void	ft_set_min(t_stacks *stacks)
 {
 	int	i;
 
 	i = 0;
 	stacks->min = stacks->a[i];
-	stacks->max = stacks->a[i];
 	while ((size_t)i < stacks->size_a)
 	{
 		if (stacks->a[i] < stacks->min)
 			stacks->min = stacks->a[i];
-		if (stacks->a[i] > stacks->max)
-			stacks->max = stacks->a[i];
 		i++;
 	}
 }
@@ -80,5 +77,5 @@ void	ft_ps_initialize(int argc, char **argv, t_stacks *stacks)
 	ft_freedoublearray(array);
 	stacks->size_a = arrsize;
 	stacks->size_b = 0;
-	ft_set_min_max(stacks);
+	ft_set_min(stacks);
 }
