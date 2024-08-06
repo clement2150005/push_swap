@@ -1,20 +1,39 @@
 NAME	= push_swap
+
+BONUS_NAME = checker
+
 CC		= cc
-FLAGS	= -Wall -Werror -Wextra -g #-fsanitize=address -fno-omit-frame-pointer
+
+FLAGS	= -Wall -Werror -Wextra -g
+
 LIBFT	= ./libft/libft.a
-SRCS	= ${wildcard *.c}
-OBJS	= ${SRCS:.c=.o}
+
+SRCS	= 	error_check.c		\
+			initialize.c		\
+			main.c misc.c		\
+			operations_utils.c	\
+			operations.c		\
+			operations2.c		\
+			operations3.c		\
+			push_cost_utils.c	\
+			push_cost.c			\
+			push_swap_utils.c	\
+			push_swap_utils2.c	\
+			push_swap.c			\
+			targets_utils.c		\
+			targets.c			\
+
+OBJS	= $(SRCS:.c=.o)
+
 RM		= rm -f
 
 %.o: %.c
 	$(CC) $(FLAGS) -I./libft -c $< -o $@
 
-$(NAME): $(LIBFT) $(OBJS)
+$(NAME): $(OBJS) $(LIBFT)
 	$(CC) $(FLAGS) -o $(NAME) $(OBJS) $(LIBFT)
 
 all: $(NAME)
-
-bonus: all
 
 $(LIBFT):
 	make -C libft
@@ -33,5 +52,4 @@ norm:
 	norminette -R CheckForbiddenSourceHeader ${SRCS}
 	norminette -R CheckDefine *.h
 
-.PHONY: all re clean fclean norm bonus gdb
-
+.PHONY: all re clean fclean norm
